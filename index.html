@@ -927,6 +927,37 @@ svg.pxi { fill: none; stroke: none !important; }
   .more-quests ul { grid-template-columns: minmax(0, 1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .bt img { transition: none; } }
+
+/* ---------- Room moods: swap the whole palette (and tint the room) ---------- */
+:root { --tint: none; }
+.scene .img-light, .grove .img-light { filter: var(--tint); transition: filter .5s ease; }
+:root[data-mood="sakura"]:not([data-mode="dark"]) { --tint: sepia(.35) hue-rotate(-35deg) saturate(1.3) brightness(1.05);
+  --cream:#FBE4EB; --paper:#FFF7F9; --ink:#4A2A38; --ink-soft:#7A5666; --sage:#F0C9D6; --sage-deep:#9A4A66; --clay:#B83A62; --peach:#F4A3B7; --glow:#F7B6C6; --rule:#EFC4D1;
+  --tray:#4A2A38; --stripe-a:#F5D6E0; --stripe-b:#F0CAD7; }
+:root[data-mood="matcha"]:not([data-mode="dark"]) { --tint: sepia(.3) hue-rotate(40deg) saturate(1.1);
+  --cream:#E3EDD6; --paper:#F8FBF2; --ink:#2B3A28; --ink-soft:#52634D; --sage:#C9DAB8; --sage-deep:#3F6A3A; --clay:#8F6228; --peach:#E8C27A; --glow:#E9D77F; --rule:#C6D9B4;
+  --tray:#2B3A28; --stripe-a:#DCE7CC; --stripe-b:#D3E0C2; }
+:root[data-mood="sunset"]:not([data-mode="dark"]) { --tint: sepia(.55) hue-rotate(-15deg) saturate(1.5) brightness(1.02);
+  --cream:#FCE6CF; --paper:#FFF8EE; --ink:#412418; --ink-soft:#7A5645; --sage:#F2D3A8; --sage-deep:#8C4A24; --clay:#C4482D; --peach:#F59E5B; --glow:#F6B04B; --rule:#EBC9A0;
+  --tray:#412418; --stripe-a:#F6DCBC; --stripe-b:#F0D2AE; }
+
+.mood { position: fixed; z-index: 41; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-inset-bottom, 0px)) + 56px); }
+.mood-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 10px; border-radius: 999px; cursor: pointer;
+  background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 3px 0 var(--ink); font-family: var(--pixel); font-size: 14px; }
+.mood-pill:hover { transform: translateY(-1px); }
+.mood-pill:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+.mood-pill:focus-visible, .mood-opt:focus-visible { outline: 2px solid var(--clay); outline-offset: 3px; }
+.sw { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--ink); background: linear-gradient(135deg, var(--a) 0 50%, var(--b) 50% 100%); }
+.mood-panel { display: flex; flex-direction: column; gap: 4px; padding: 10px; min-width: 190px; border-radius: 14px; background: var(--paper); border: 2px solid var(--ink); box-shadow: 0 4px 0 var(--ink); animation: pillin .3s cubic-bezier(.3,1.5,.5,1); }
+.mood-panel[hidden] { display: none !important; }
+.mood-panel .mp-k { margin: 0 6px 4px; font-family: var(--pixel); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--sage-deep); }
+.mood-opt { display: flex; align-items: center; gap: 12px; min-height: 42px; padding: 0 10px; border: 0; border-radius: 10px; background: none; color: var(--ink); font-family: var(--pixel); font-size: 14px; cursor: pointer; text-align: left; }
+.mood-opt:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.mood-opt[aria-checked="true"] { background: color-mix(in srgb, var(--glow) 35%, transparent); }
+.mood-opt[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--clay); }
+@media (prefers-reduced-motion: reduce) { .mood-panel { animation: none; } .scene .img-light, .grove .img-light { transition: none; } }
 </style>
 </head>
 <body>
@@ -1123,6 +1154,7 @@ svg.pxi { fill: none; stroke: none !important; }
           <li><kbd role="button" tabindex="0" data-mk="l">L</kbd> turns the lights off (not <kbd role="button" tabindex="0" data-mk="i">I</kbd>!)</li>
           <li><kbd role="button" tabindex="0" data-mk="m">M</kbd> mutes clicks (if you're at work 😉)</li>
           <li><kbd role="button" tabindex="0" data-mk="r">R</kbd> opens my resume</li>
+          <li><kbd role="button" tabindex="0" data-mk="c">C</kbd> changes the room’s mood</li>
           <li><span class="k-range">1–5</span> or click glowing items to explore</li>
         </ul>
       </div>
@@ -1578,6 +1610,19 @@ svg.pxi { fill: none; stroke: none !important; }
   </div>
 </footer>
 
+<div class="mood" id="mood">
+  <div class="mood-panel" id="mood-panel" role="radiogroup" aria-label="Room mood" hidden>
+    <p class="mp-k">Room mood</p>
+    <button type="button" class="mood-opt" role="radio" aria-checked="true" data-mood="daylight"><span class="sw" style="--a:#D3E8F7;--b:#B65A43"></span>Daylight</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="sakura"><span class="sw" style="--a:#F7B6C6;--b:#B83A62"></span>Sakura</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="matcha"><span class="sw" style="--a:#C9DAB8;--b:#3F6A3A"></span>Matcha</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="sunset"><span class="sw" style="--a:#F6B04B;--b:#C4482D"></span>Sunset</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="midnight"><span class="sw" style="--a:#19244F;--b:#F6C46A"></span>Midnight</button>
+  </div>
+  <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span>Mood</button>
+</div>
+
+
 <script>
 (function () {
   var root = document.documentElement;
@@ -1613,13 +1658,38 @@ svg.pxi { fill: none; stroke: none !important; }
     lights.setAttribute("aria-pressed", String(m === "dark"));
     lights.setAttribute("aria-label", m === "dark" ? "Turn the lights on (light mode)" : "Turn the lights off (dark mode)");
   }
-  // Opens in light mode by day and dark after 7 PM (until 6 AM); the Lights key switches it for the visit.
+  // Room moods: Daylight, Sakura, Matcha, Sunset (light) and Midnight (dark). Opens in Daylight by day and Midnight after 7 PM.
+  var MOODS = ["daylight", "sakura", "matcha", "sunset", "midnight"];
+  var moodSw = { daylight: ["#D3E8F7", "#B65A43"], sakura: ["#F7B6C6", "#B83A62"], matcha: ["#C9DAB8", "#3F6A3A"], sunset: ["#F6B04B", "#C4482D"], midnight: ["#19244F", "#F6C46A"] };
+  var curMood = "daylight", lastLight = "daylight";
+  var moodPill = document.getElementById("mood-pill"), moodPanel = document.getElementById("mood-panel"), moodSwEl = document.getElementById("mood-sw");
+  var moodOpts = Array.prototype.slice.call(moodPanel.querySelectorAll(".mood-opt"));
+  function setMood(name) {
+    if (MOODS.indexOf(name) < 0) name = "daylight";
+    curMood = name;
+    if (name === "midnight") { root.removeAttribute("data-mood"); setMode("dark"); }
+    else { lastLight = name; setMode("light"); if (name === "daylight") root.removeAttribute("data-mood"); else root.setAttribute("data-mood", name); }
+    moodOpts.forEach(function (b) { b.setAttribute("aria-checked", String(b.getAttribute("data-mood") === name)); });
+    moodSwEl.style.setProperty("--a", moodSw[name][0]); moodSwEl.style.setProperty("--b", moodSw[name][1]);
+  }
   var hourNow = new Date().getHours();
-  setMode(hourNow >= 19 || hourNow < 6 ? "dark" : "light");
+  setMood(hourNow >= 19 || hourNow < 6 ? "midnight" : "daylight");
+  // The Lights key still flips between day and night (back to the last light mood you chose).
   lights.addEventListener("click", function () {
-    setMode(root.getAttribute("data-mode") === "dark" ? "light" : "dark");
+    setMood(curMood === "midnight" ? lastLight : "midnight");
     blip(330, 0.08);
   });
+  function moodOpen(o) { moodPanel.hidden = !o; moodPill.setAttribute("aria-expanded", String(o)); }
+  moodPill.addEventListener("click", function (e) { e.stopPropagation(); blip(520, 0.05); moodOpen(moodPanel.hidden); if (!moodPanel.hidden) { var c = moodPanel.querySelector('[aria-checked="true"]'); if (c) c.focus(); } });
+  moodOpts.forEach(function (b, i) {
+    b.addEventListener("click", function () { setMood(b.getAttribute("data-mood")); blip(560 + i * 70, 0.06); });
+    b.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); var n = moodOpts[(i + (e.key === "ArrowDown" ? 1 : moodOpts.length - 1)) % moodOpts.length]; n.focus(); }
+    });
+  });
+  document.addEventListener("click", function (e) { if (!moodPanel.hidden && !e.target.closest("#mood")) moodOpen(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !moodPanel.hidden) { moodOpen(false); moodPill.focus(); } });
+  document.addEventListener("mood:cycle", function () { setMood(MOODS[(MOODS.indexOf(curMood) + 1) % MOODS.length]); blip(620, 0.06); });
 
   /* ---------- Sound: tiny game blips made in the browser ---------- */
   var ctx = null, soundOn = load("sound") !== "off";
@@ -1924,6 +1994,7 @@ svg.pxi { fill: none; stroke: none !important; }
       else if (m === "m") soundBtn.click();
       else if (m === "r") document.querySelector('.slot[data-spot="resume"]').click();
       else if (m === "i") { blip(180, 0.08); }
+      else if (m === "c") document.dispatchEvent(new Event("mood:cycle"));
     }
     k.addEventListener("click", fire);
     k.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); fire(); } });
@@ -1939,6 +2010,7 @@ svg.pxi { fill: none; stroke: none !important; }
     if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
     var key = (e.key || "").toLowerCase();
     if (key === "m" && !e.repeat) { e.preventDefault(); soundBtn.click(); return; }
+    if (key === "c" && !e.repeat) { e.preventDefault(); document.dispatchEvent(new Event("mood:cycle")); return; }
     if (key === "r") key = "3";
     if (key === "s") key = "5";
     var slot = document.querySelector('.slot[data-key="' + key + '"]');
