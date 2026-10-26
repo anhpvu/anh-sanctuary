@@ -1015,6 +1015,12 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .pv.pv-air { margin: 0; }
 .pv.pv-air figcaption { font-family: var(--body); font-size: 15px; line-height: 1.4; color: var(--ink-soft); margin-top: 10px; }
 .pv.pv-air figcaption b { display: block; font-family: var(--pixel); font-size: 14px; letter-spacing: .03em; color: var(--ink); margin-bottom: 2px; font-weight: 500; }
+
+/* RISE: tidy the LinkedIn link cards and left-align group headlines */
+.chapter .body > .rise-h { grid-column: 1 / -1; max-width: none; margin-top: 24px; }
+.li-link { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 6px; min-height: 120px; text-align: left; }
+.li-link b { font-family: var(--pixel); font-size: 16px; letter-spacing: .03em; font-weight: 500; }
+.li-link span { font-size: 15px; font-weight: 500; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -1459,7 +1465,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       <div class="body">
         <p>RISE is Baker Hill's annual lending conference, and for 2026 it was a chance to take Unify beyond the product. I designed the campaign from first touchpoint to main stage: ads that greeted bankers at San Antonio International Airport, banners, on-site signage and presentations, all built around the Unify story. Keynote speaker Kevin O'Leary even shared our assets with his LinkedIn audience.</p>
         <div class="rise-media"><figure class="shot media"><img src="work/bh-rise-keynote.webp" alt="A packed ballroom at RISE 2026 watching a keynote under a Baker Hill stage screen reading Where AI is heading in lending" loading="lazy" decoding="async"></figure><div class="li-row"><div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7456073319293825025?collapsed=1" title="LinkedIn post about the RISE 2026 campaign and San Antonio airport banners" loading="lazy" frameborder="0" allowfullscreen></iframe></div><div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7442541154568454144?collapsed=1" title="Kevin O'Leary's LinkedIn post about RISE 2026" loading="lazy" frameborder="0" allowfullscreen></iframe></div></div></div>
-        <p class="cap">RISE 2026 keynote, the San Antonio airport banners, and keynote speaker Kevin O'Leary's post.</p>
+        
         <h3 class="rise-h">It started at the airport</h3>
         <div class="shots two" style="grid-template-columns:1.778fr .5625fr"><figure class="pv pv-air"><div class="shot media"><video src="work/bh-rise-airport-arrivals.mp4" poster="work/bh-rise-airport-arrivals-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Digital screens in the San Antonio airport arrivals hall showing RISE welcome messages and the keynote speaker"></video></div><figcaption><b>Arrivals Hall Screens</b>Digital screens welcoming attendees at San Antonio International Airport.</figcaption></figure><figure class="pv pv-air"><div class="shot media"><video src="work/bh-rise-airport-escalator.mp4" poster="work/bh-rise-airport-escalator-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A RISE welcome banner above an airport escalator: Bankers! Welcome to Texas, y'all"></video></div><figcaption><b>Escalator Arrival Banner</b>Branded digital banner welcoming attendees as they arrived at the event.</figcaption></figure></div>
         
