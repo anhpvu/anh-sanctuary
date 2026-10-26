@@ -1233,6 +1233,7 @@ body:has(#view-home:not([hidden])) .mood { left: var(--mood-left, calc(max(16px,
         <p class="mn-sub">Quick cheat sheet:</p>
         <ul>
           <li><kbd role="button" tabindex="0" data-mk="l">L</kbd> turns the light off</li>
+          <li><kbd role="button" tabindex="0" data-mk="s">S</kbd> turns sound on or off</li>
           <li><kbd role="button" tabindex="0" data-mk="r">R</kbd> opens my resume</li>
           <li><kbd role="button" tabindex="0" data-mk="m">M</kbd> changes the room’s mood</li>
           <li><span class="k-range">1–5</span> or click glowing items to explore</li>
@@ -2152,6 +2153,7 @@ body:has(#view-home:not([hidden])) .mood { left: var(--mood-left, calc(max(16px,
       blip(220, 0.03);
       if (m === "l") document.getElementById("lights").click();
       else if (m === "m") document.dispatchEvent(new Event("mood:cycle"));
+      else if (m === "s") soundBtn.click();
       else if (m === "r") document.querySelector('.slot[data-spot="resume"]').click();
       else if (m === "i") { blip(180, 0.08); }
     }
