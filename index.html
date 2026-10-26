@@ -931,13 +931,13 @@ svg.pxi { fill: none; stroke: none !important; }
 /* ---------- Room moods: swap the whole palette (and tint the room) ---------- */
 :root { --tint: none; }
 .scene .img-light, .grove .img-light { filter: var(--tint); transition: filter .5s ease; }
-:root[data-mood="sakura"]:not([data-mode="dark"]) { --tint: sepia(.35) hue-rotate(-35deg) saturate(1.3) brightness(1.05);
+:root[data-mood="dawn"]:not([data-mode="dark"]) { --tint: sepia(.35) hue-rotate(-35deg) saturate(1.3) brightness(1.05);
   --cream:#FBE4EB; --paper:#FFF7F9; --ink:#4A2A38; --ink-soft:#7A5666; --sage:#F0C9D6; --sage-deep:#9A4A66; --clay:#B83A62; --peach:#F4A3B7; --glow:#F7B6C6; --rule:#EFC4D1;
   --tray:#4A2A38; --stripe-a:#F5D6E0; --stripe-b:#F0CAD7; }
-:root[data-mood="matcha"]:not([data-mode="dark"]) { --tint: sepia(.3) hue-rotate(40deg) saturate(1.1);
-  --cream:#E3EDD6; --paper:#F8FBF2; --ink:#2B3A28; --ink-soft:#52634D; --sage:#C9DAB8; --sage-deep:#3F6A3A; --clay:#8F6228; --peach:#E8C27A; --glow:#E9D77F; --rule:#C6D9B4;
-  --tray:#2B3A28; --stripe-a:#DCE7CC; --stripe-b:#D3E0C2; }
-:root[data-mood="sunset"]:not([data-mode="dark"]) { --tint: sepia(.55) hue-rotate(-15deg) saturate(1.5) brightness(1.02);
+:root[data-mood="twilight"]:not([data-mode="dark"]) { --tint: sepia(.3) hue-rotate(205deg) saturate(1.2) brightness(.95);
+  --cream:#DAD4EF; --paper:#F7F4FC; --ink:#2C2650; --ink-soft:#5B5582; --sage:#C8C0E8; --sage-deep:#51409F; --clay:#A8396B; --peach:#E6A0C0; --glow:#F2C879; --rule:#C9C2E6;
+  --tray:#2C2650; --stripe-a:#D9D3EE; --stripe-b:#CFC8E8; }
+:root[data-mood="dusk"]:not([data-mode="dark"]) { --tint: sepia(.55) hue-rotate(-15deg) saturate(1.5) brightness(1.02);
   --cream:#FCE6CF; --paper:#FFF8EE; --ink:#412418; --ink-soft:#7A5645; --sage:#F2D3A8; --sage-deep:#8C4A24; --clay:#C4482D; --peach:#F59E5B; --glow:#F6B04B; --rule:#EBC9A0;
   --tray:#412418; --stripe-a:#F6DCBC; --stripe-b:#F0D2AE; }
 
@@ -1613,10 +1613,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 <div class="mood" id="mood">
   <div class="mood-panel" id="mood-panel" role="radiogroup" aria-label="Room mood" hidden>
     <p class="mp-k">Room mood</p>
-    <button type="button" class="mood-opt" role="radio" aria-checked="true" data-mood="daylight"><span class="sw" style="--a:#D3E8F7;--b:#B65A43"></span>Daylight</button>
-    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="sakura"><span class="sw" style="--a:#F7B6C6;--b:#B83A62"></span>Sakura</button>
-    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="matcha"><span class="sw" style="--a:#C9DAB8;--b:#3F6A3A"></span>Matcha</button>
-    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="sunset"><span class="sw" style="--a:#F6B04B;--b:#C4482D"></span>Sunset</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="dawn"><span class="sw" style="--a:#F7B6C6;--b:#B83A62"></span>Dawn</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="true" data-mood="midday"><span class="sw" style="--a:#D3E8F7;--b:#B65A43"></span>Midday</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="dusk"><span class="sw" style="--a:#F6B04B;--b:#C4482D"></span>Dusk</button>
+    <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="twilight"><span class="sw" style="--a:#C8C0E8;--b:#51409F"></span>Twilight</button>
     <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="midnight"><span class="sw" style="--a:#19244F;--b:#F6C46A"></span>Midnight</button>
   </div>
   <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span>Mood</button>
@@ -1658,22 +1658,22 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     lights.setAttribute("aria-pressed", String(m === "dark"));
     lights.setAttribute("aria-label", m === "dark" ? "Turn the lights on (light mode)" : "Turn the lights off (dark mode)");
   }
-  // Room moods: Daylight, Sakura, Matcha, Sunset (light) and Midnight (dark). Opens in Daylight by day and Midnight after 7 PM.
-  var MOODS = ["daylight", "sakura", "matcha", "sunset", "midnight"];
-  var moodSw = { daylight: ["#D3E8F7", "#B65A43"], sakura: ["#F7B6C6", "#B83A62"], matcha: ["#C9DAB8", "#3F6A3A"], sunset: ["#F6B04B", "#C4482D"], midnight: ["#19244F", "#F6C46A"] };
-  var curMood = "daylight", lastLight = "daylight";
+  // Room moods: Dawn, Midday, Dusk, Twilight (light) and Midnight (dark). Opens in Midday by day and Midnight after 7 PM.
+  var MOODS = ["dawn", "midday", "dusk", "twilight", "midnight"];
+  var moodSw = { dawn: ["#F7B6C6", "#B83A62"], midday: ["#D3E8F7", "#B65A43"], dusk: ["#F6B04B", "#C4482D"], twilight: ["#C8C0E8", "#51409F"], midnight: ["#19244F", "#F6C46A"] };
+  var curMood = "midday", lastLight = "midday";
   var moodPill = document.getElementById("mood-pill"), moodPanel = document.getElementById("mood-panel"), moodSwEl = document.getElementById("mood-sw");
   var moodOpts = Array.prototype.slice.call(moodPanel.querySelectorAll(".mood-opt"));
   function setMood(name) {
-    if (MOODS.indexOf(name) < 0) name = "daylight";
+    if (MOODS.indexOf(name) < 0) name = "midday";
     curMood = name;
     if (name === "midnight") { root.removeAttribute("data-mood"); setMode("dark"); }
-    else { lastLight = name; setMode("light"); if (name === "daylight") root.removeAttribute("data-mood"); else root.setAttribute("data-mood", name); }
+    else { lastLight = name; setMode("light"); if (name === "midday") root.removeAttribute("data-mood"); else root.setAttribute("data-mood", name); }
     moodOpts.forEach(function (b) { b.setAttribute("aria-checked", String(b.getAttribute("data-mood") === name)); });
     moodSwEl.style.setProperty("--a", moodSw[name][0]); moodSwEl.style.setProperty("--b", moodSw[name][1]);
   }
   var hourNow = new Date().getHours();
-  setMood(hourNow >= 19 || hourNow < 6 ? "midnight" : "daylight");
+  setMood(hourNow >= 19 || hourNow < 6 ? "midnight" : "midday");
   // The Lights key still flips between day and night (back to the last light mood you chose).
   lights.addEventListener("click", function () {
     setMood(curMood === "midnight" ? lastLight : "midnight");
