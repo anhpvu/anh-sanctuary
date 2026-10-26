@@ -1228,29 +1228,7 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
         </svg>
       </button>
     </div>
-    <div class="chest-wrap" id="chest" hidden>
-      <div class="chest-backdrop" data-close></div>
-      <div class="chest-panel" role="dialog" aria-modal="true" aria-labelledby="chest-title">
-        <span class="mn-label">toolkit</span>
-        <button type="button" class="mn-close" data-close aria-label="Close">×</button>
-        <h2 class="chest-title" id="chest-title">Tools I reach for</h2>
-        <p class="chest-note">My everyday shortcuts. Tap a key, hit 1 to 6, or spin the knob.</p>
-        <div class="tk-pad" role="group" aria-label="Shortcut keypad of tools I use">
-          <div class="tk-top">
-            <div class="tk-screen" id="tk-screen" aria-live="polite">tools.exe</div>
-            <button type="button" class="tk-knob" aria-label="Turn the knob to cycle through tools"></button>
-          </div>
-          <div class="tk-keys">
-            <button type="button" class="tk-tool" data-say="figma · where every screen starts" style="--brand:#A259FF"><span class="tnum" aria-hidden="true">1</span><img class="tlogo" src="logos/figma.webp" alt="" draggable="false"><span class="name">Figma</span></button>
-            <button type="button" class="tk-tool" data-say="adobe cc · illustrator, photoshop, indesign" style="--brand:#FF3D8B"><span class="tnum" aria-hidden="true">2</span><img class="tlogo" src="logos/adobe.webp" alt="" draggable="false"><span class="name">Adobe CC</span></button>
-            <button type="button" class="tk-tool" data-say="notion · notes, docs, to-dos" style="--brand:#8A8580"><span class="tnum" aria-hidden="true">3</span><img class="tlogo" src="logos/notion.webp" alt="" draggable="false"><span class="name">Notion</span></button>
-            <button type="button" class="tk-tool" data-say="claude · my thinking partner" style="--brand:#D97757"><span class="tnum" aria-hidden="true">4</span><img class="tlogo" src="logos/claude.webp" alt="" draggable="false"><span class="name">Claude</span></button>
-            <button type="button" class="tk-tool" data-say="chatgpt · quick first drafts" style="--brand:#10A37F"><span class="tnum" aria-hidden="true">5</span><img class="tlogo" src="logos/chatgpt.webp" alt="" draggable="false"><span class="name">ChatGPT</span></button>
-            <button type="button" class="tk-tool" data-say="hubspot · campaigns + crm" style="--brand:#FF5C35"><span class="tnum" aria-hidden="true">6</span><img class="tlogo" src="logos/hubspot.webp" alt="" draggable="false"><span class="name">HubSpot</span></button>
-          </div>
-        </div>
-      </div>
-    </div>
+    
     <button type="button" class="mail-pill" id="mail-pill" hidden aria-controls="mailnote" aria-expanded="false"><svg class="pxi" viewBox="0 0 32 32" aria-hidden="true" shape-rendering="geometricPrecision"><path d="M32 9.14H30.47V21.33H32V9.14Z" fill="currentColor"/><path d="M30.47 7.62H28.95V9.14H30.47V7.62Z" fill="currentColor"/><path d="M16.76 21.33V9.14H15.24V7.62H21.33V12.19H22.85V7.62H28.95V6.1H22.85V4.57H27.43V0H21.33V6.1H7.61999V7.62H6.08999V9.14H4.56999V21.33H3.04999V22.86H13.71V24.38H15.24V32H16.76V22.86H21.33V32H22.85V22.86H30.47V21.33H16.76ZM22.85 1.52H25.9V3.05H22.85V1.52ZM15.24 18.29H13.71V19.81H15.24V21.33H7.61999V12.19H15.24V18.29Z" fill="currentColor"/><path d="M13.71 16.76H12.19V18.29H13.71V16.76Z" fill="currentColor"/><path d="M13.71 24.38H10.67V25.9H13.71V24.38Z" fill="currentColor"/><path d="M10.67 15.24V13.71H9.14001V15.24H10.66V16.76H12.19V15.24H10.67Z" fill="currentColor"/><path d="M10.67 25.9H9.14001V27.43H10.67V25.9Z" fill="currentColor"/><path d="M9.14002 27.43H1.52002V28.95H9.14002V27.43Z" fill="currentColor"/><path d="M3.05002 22.86H1.52002V24.38H3.05002V22.86Z" fill="currentColor"/><path d="M1.52 24.38H0V27.43H1.52V24.38Z" fill="currentColor"/></svg> Cheat sheet <svg class="pxi q-ico" viewBox="0 0 32 32" aria-hidden="true" shape-rendering="geometricPrecision"><path d="M32 12.19H30.48V19.81H32V12.19Z" fill="currentColor"/><path d="M30.4799 19.81H28.95V22.86H30.4799V19.81Z" fill="currentColor"/><path d="M30.4799 9.14H28.95V12.19H30.4799V9.14Z" fill="currentColor"/><path d="M28.9501 22.86H27.4301V25.9H28.9501V22.86Z" fill="currentColor"/><path d="M28.9501 6.09H27.4301V9.14H28.9501V6.09Z" fill="currentColor"/><path d="M27.43 25.9H25.9V27.43H27.43V25.9Z" fill="currentColor"/><path d="M27.43 4.57H25.9V6.09H27.43V4.57Z" fill="currentColor"/><path d="M25.9 27.43H22.86V28.95H25.9V27.43Z" fill="currentColor"/><path d="M25.9 3.05H22.86V4.57H25.9V3.05Z" fill="currentColor"/><path d="M22.8601 28.95H19.8101V30.48H22.8601V28.95Z" fill="currentColor"/><path d="M21.33 6.09H19.81V4.57H12.19V6.09H10.67V7.62H9.14001V12.19H12.19V9.14H13.71V7.62H16.76V9.14H18.29V12.19H16.76V13.71H15.24V15.24H13.71V18.29H18.29V16.76H19.81V15.24H21.33V13.71H22.86V7.62H21.33V6.09Z" fill="currentColor"/><path d="M22.8601 1.52H19.8101V3.05H22.8601V1.52Z" fill="currentColor"/><path d="M19.8099 30.48H12.1899V32H19.8099V30.48Z" fill="currentColor"/><path d="M18.2899 19.81H13.7099V21.33H12.1899V25.9H13.7099V27.43H18.2899V25.9H19.8099V21.33H18.2899V19.81Z" fill="currentColor"/><path d="M19.8099 0H12.1899V1.52H19.8099V0Z" fill="currentColor"/><path d="M12.19 28.95H9.14001V30.48H12.19V28.95Z" fill="currentColor"/><path d="M12.19 1.52H9.14001V3.05H12.19V1.52Z" fill="currentColor"/><path d="M9.13997 27.43H6.08997V28.95H9.13997V27.43Z" fill="currentColor"/><path d="M9.13997 3.05H6.08997V4.57H9.13997V3.05Z" fill="currentColor"/><path d="M6.08995 25.9H4.56995V27.43H6.08995V25.9Z" fill="currentColor"/><path d="M6.08995 4.57H4.56995V6.09H6.08995V4.57Z" fill="currentColor"/><path d="M4.57005 22.86H3.05005V25.9H4.57005V22.86Z" fill="currentColor"/><path d="M4.57005 6.09H3.05005V9.14H4.57005V6.09Z" fill="currentColor"/><path d="M3.05002 19.81H1.52002V22.86H3.05002V19.81Z" fill="currentColor"/><path d="M3.05002 9.14H1.52002V12.19H3.05002V9.14Z" fill="currentColor"/><path d="M1.52 12.19H0V19.81H1.52V12.19Z" fill="currentColor"/></svg></button>
     <div class="pc-wrap" id="postcard" hidden>
       <div class="pc-backdrop" data-close></div>
@@ -1802,6 +1780,29 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
   </div>
 </footer>
 
+<div class="chest-wrap" id="chest" hidden>
+      <div class="chest-backdrop" data-close></div>
+      <div class="chest-panel" role="dialog" aria-modal="true" aria-labelledby="chest-title">
+        <span class="mn-label">toolkit</span>
+        <button type="button" class="mn-close" data-close aria-label="Close">×</button>
+        <h2 class="chest-title" id="chest-title">Tools I reach for</h2>
+        <p class="chest-note">My everyday shortcuts. Tap a key, hit 1 to 6, or spin the knob.</p>
+        <div class="tk-pad" role="group" aria-label="Shortcut keypad of tools I use">
+          <div class="tk-top">
+            <div class="tk-screen" id="tk-screen" aria-live="polite">tools.exe</div>
+            <button type="button" class="tk-knob" aria-label="Turn the knob to cycle through tools"></button>
+          </div>
+          <div class="tk-keys">
+            <button type="button" class="tk-tool" data-say="figma · where every screen starts" style="--brand:#A259FF"><span class="tnum" aria-hidden="true">1</span><img class="tlogo" src="logos/figma.webp" alt="" draggable="false"><span class="name">Figma</span></button>
+            <button type="button" class="tk-tool" data-say="adobe cc · illustrator, photoshop, indesign" style="--brand:#FF3D8B"><span class="tnum" aria-hidden="true">2</span><img class="tlogo" src="logos/adobe.webp" alt="" draggable="false"><span class="name">Adobe CC</span></button>
+            <button type="button" class="tk-tool" data-say="notion · notes, docs, to-dos" style="--brand:#8A8580"><span class="tnum" aria-hidden="true">3</span><img class="tlogo" src="logos/notion.webp" alt="" draggable="false"><span class="name">Notion</span></button>
+            <button type="button" class="tk-tool" data-say="claude · my thinking partner" style="--brand:#D97757"><span class="tnum" aria-hidden="true">4</span><img class="tlogo" src="logos/claude.webp" alt="" draggable="false"><span class="name">Claude</span></button>
+            <button type="button" class="tk-tool" data-say="chatgpt · quick first drafts" style="--brand:#10A37F"><span class="tnum" aria-hidden="true">5</span><img class="tlogo" src="logos/chatgpt.webp" alt="" draggable="false"><span class="name">ChatGPT</span></button>
+            <button type="button" class="tk-tool" data-say="hubspot · campaigns + crm" style="--brand:#FF5C35"><span class="tnum" aria-hidden="true">6</span><img class="tlogo" src="logos/hubspot.webp" alt="" draggable="false"><span class="name">HubSpot</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
 <div class="dock" id="dock"><button type="button" class="slot" id="lights" data-key="l" aria-pressed="false"><span class="num" aria-hidden="true">L</span><svg class="pxi moon" viewBox="0 0 32 32" aria-hidden="true" shape-rendering="geometricPrecision"><path d="M29.71 11.4301H28.19V12.9501H26.67V14.4801H28.19V16.0001H29.71V14.4801H31.24V12.9501H29.71V11.4301Z" fill="currentColor"/><path d="M29.7101 22.1H28.1901V23.62H29.7101V22.1Z" fill="currentColor"/><path d="M26.67 0.76001V2.29001H25.14V3.81001H26.67V5.33001H28.19V3.81001H29.71V2.29001H28.19V0.76001H26.67Z" fill="currentColor"/><path d="M26.67 8.38H25.14V9.91H26.67V8.38Z" fill="currentColor"/><path d="M25.14 26.67H23.62V28.19H22.09V29.72H23.62V31.24H25.14V29.72H26.67V28.19H25.14V26.67Z" fill="currentColor"/><path d="M25.14 19.05H23.62V20.57H25.14V19.05Z" fill="currentColor"/><path d="M22.09 22.1H12.95V23.62H20.57V25.14H22.09V22.1Z" fill="currentColor"/><path d="M12.95 8.37999V9.90999H22.09V6.85999H20.57V8.37999H12.95Z" fill="currentColor"/><path d="M20.57 25.14H17.52V26.67H20.57V25.14Z" fill="currentColor"/><path d="M19.05 19.05V17.53H20.57V16H19.05V14.48H17.52V16H16V17.53H17.52V19.05H19.05Z" fill="currentColor"/><path d="M20.57 5.32996H17.52V6.85996H20.57V5.32996Z" fill="currentColor"/><path d="M17.52 26.67H9.90002V28.19H17.52V26.67Z" fill="currentColor"/><path d="M12.9501 20.5701H11.4301V22.1001H12.9501V20.5701Z" fill="currentColor"/><path d="M12.9501 9.91003H11.4301V11.43H12.9501V9.91003Z" fill="currentColor"/><path d="M17.52 3.81006H9.90002V5.33006H17.52V3.81006Z" fill="currentColor"/><path d="M11.43 11.4301H9.90002V20.5701H11.43V11.4301Z" fill="currentColor"/><path d="M9.89998 25.14H6.85999V26.67H9.89998V25.14Z" fill="currentColor"/><path d="M9.89998 5.32996H6.85999V6.85996H9.89998V5.32996Z" fill="currentColor"/><path d="M6.85996 23.62H5.32996V25.14H6.85996V23.62Z" fill="currentColor"/><path d="M6.85996 6.85999H5.32996V8.37999H6.85996V6.85999Z" fill="currentColor"/><path d="M5.33006 20.5701H3.81006V23.6201H5.33006V20.5701Z" fill="currentColor"/><path d="M5.33006 8.38H3.81006V11.43H5.33006V8.38Z" fill="currentColor"/><path d="M3.81004 29.72H2.29004V31.24H3.81004V29.72Z" fill="currentColor"/><path d="M3.81004 11.4301H2.29004V20.5701H3.81004V11.4301Z" fill="currentColor"/><path d="M2.29001 3.81006H0.76001V5.33006H2.29001V3.81006Z" fill="currentColor"/></svg><svg class="pxi sun" viewBox="0 0 32 32" aria-hidden="true" shape-rendering="geometricPrecision"><path d="M32 19.0551H30.47V25.1451H32V19.0551Z" fill="currentColor"/><path d="M32 11.4351H28.95V12.9551H32V11.4351Z" fill="currentColor"/><path d="M30.4699 25.145H28.95V26.675H30.4699V25.145Z" fill="currentColor"/><path d="M30.4699 17.525H28.95V19.055H30.4699V17.525Z" fill="currentColor"/><path d="M30.4699 3.81506H28.95V5.33506H30.4699V3.81506Z" fill="currentColor"/><path d="M28.9501 26.675H27.4301V28.195H28.9501V26.675Z" fill="currentColor"/><path d="M28.9501 16.005H27.4301V17.525H28.9501V16.005Z" fill="currentColor"/><path d="M28.9501 5.33508H27.4301V6.86508H28.9501V5.33508Z" fill="currentColor"/><path d="M27.43 28.1951H3.05005V29.7151H27.43V28.1951Z" fill="currentColor"/><path d="M22.8501 16.005H21.3301V17.525H22.8501V16.005Z" fill="currentColor"/><path d="M22.8501 2.28503H21.3301V5.33503H22.8501V2.28503Z" fill="currentColor"/><path d="M21.3301 17.525H19.8101V19.055H21.3301V17.525Z" fill="currentColor"/><path d="M16.76 5.33508H15.24V6.86508H16.76V5.33508Z" fill="currentColor"/><path d="M15.24 3.81506H13.71V5.33506H15.24V3.81506Z" fill="currentColor"/><path d="M13.7099 9.90499H18.2799V11.435H21.3299V12.955H22.8499V16.005H27.4299V9.90499H25.8999V8.38499H24.3799V6.86499H19.8099V8.38499H12.1899V9.90499H10.6599V11.435H13.7099V9.90499Z" fill="currentColor"/><path d="M12.1899 19.0551H10.6599V20.5751H12.1899V19.0551Z" fill="currentColor"/><path d="M10.6599 17.525H9.13989V19.055H10.6599V17.525Z" fill="currentColor"/><path d="M10.6599 11.4351H9.13989V12.9551H10.6599V11.4351Z" fill="currentColor"/><path d="M9.14005 17.5251V12.9551H7.62005V16.0051H3.05005V17.5251H9.14005Z" fill="currentColor"/><path d="M3.05002 26.675H1.52002V28.195H3.05002V26.675Z" fill="currentColor"/><path d="M3.05002 17.525H1.52002V19.055H3.05002V17.525Z" fill="currentColor"/><path d="M1.52 19.0551H0V26.6751H1.52V19.0551Z" fill="currentColor"/></svg><span class="lbl">Lights</span></button><button type="button" class="slot mood-key" id="mood-pill" aria-expanded="false" aria-controls="mood-panel" aria-haspopup="true"><span class="num" aria-hidden="true">M</span><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span><span class="lbl">Mood</span></button></div>
 <div class="mood" id="mood">
   <div class="mood-panel" id="mood-panel" role="radiogroup" aria-label="Room mood" hidden>
@@ -2069,8 +2070,9 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
   function openChest() {
     chestReturn = document.activeElement;
     var r = chestSpot.getBoundingClientRect(), vw = window.innerWidth, vh = window.innerHeight;
-    chestPanel.style.setProperty("--ox", Math.round((r.left + r.width / 2) / vw * 100) + "%");
-    chestPanel.style.setProperty("--oy", Math.round((r.top + r.height / 2) / vh * 100) + "%");
+    var hasR = r.width > 0;
+    chestPanel.style.setProperty("--ox", hasR ? Math.round((r.left + r.width / 2) / vw * 100) + "%" : "50%");
+    chestPanel.style.setProperty("--oy", hasR ? Math.round((r.top + r.height / 2) / vh * 100) + "%" : "50%");
     chest.hidden = false;
     [523, 659, 784, 1047].forEach(function (f, i) { setTimeout(function () { blip(f, 0.07); }, i * 70); });
     setTimeout(function () { tkKnob.focus({ preventScroll: true }); }, 60);
