@@ -963,6 +963,16 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .mood-opt[aria-checked="true"] { background: color-mix(in srgb, var(--glow) 35%, transparent); }
 .mood-opt[aria-checked="true"]::after { content: "✓"; margin-left: auto; color: var(--clay); }
 @media (prefers-reduced-motion: reduce) { .mood-panel { animation: none; } .scene .img-light, .grove .img-light { transition: none; } }
+
+/* Case hero: title on the left, summary on the right, so the intro fills the row */
+.case-hero h1 { text-wrap: pretty; }
+.case-hero .sum { text-wrap: pretty; }
+@media (min-width: 1100px) {
+  .case-hero { max-width: none; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: 64px; row-gap: 16px; align-items: start; }
+  .case-hero .eyebrow { grid-column: 1 / -1; }
+  .case-hero h1 { grid-column: 1; }
+  .case-hero .sum { grid-column: 2; max-width: none; font-size: 19px; line-height: 1.55; margin-top: 6px; }
+}
 </style>
 </head>
 <body>
@@ -1315,7 +1325,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <header class="case-hero">
       <p class="eyebrow">Baker Hill · Unify (formerly NextGen)</p>
       <h1>Giving a lending platform one clear design language</h1>
-      <p class="sum">Baker Hill makes loan origination software for community banks and credit unions. Its design pieces were years out of date and never formalized into a system, so every team solved the same problems differently. I helped rebrand NextGen into Unify, rebuild its UI and UX on a shared system, and carry that look into marketing and RISE 2026, Baker Hill's annual lending conference.</p>
+      <p class="sum">Baker Hill builds loan software for community banks and credit unions. Its product had grown one screen at a time, with no shared system behind it. I helped turn NextGen into Unify: a new name, a rebuilt UI and UX on one design system, and a look that carries all the way into marketing and RISE 2026.</p>
     </header>
     <dl class="meta">
       <div><dt>Role</dt><dd>Product Designer</dd></div>
@@ -1326,9 +1336,9 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <figure class="shot media"><img src="work/bh-unify-los-new-mockup-1.webp" alt="Unify loan origination dashboard on a laptop" loading="lazy" decoding="async"></figure>
 
     <section class="chapter">
-      <div><span class="label">The starting point</span><h2>A system that had fallen behind</h2></div>
+      <div><span class="label">The starting point</span><h2>A product that grew one screen at a time</h2></div>
       <div class="body">
-        <p>NextGen had grown feature by feature. Screens built years apart used different buttons, tables and spacing, so lenders had to relearn the product every time they moved between steps. The components that did exist were outdated and undocumented, so designers and engineers kept rebuilding the same pieces.</p>
+        <p>NextGen had grown feature by feature. Buttons, tables and spacing changed from screen to screen, so lenders had to relearn the product at every step. The few shared components were dated and undocumented, so designers and engineers kept rebuilding the same things.</p>
         <div class="shots two" style="grid-template-columns:1.91fr 1.62fr"><figure class="shot media"><img src="work/bh-nextgen-laptop.webp" alt="The old NextGen loan decision screen on a laptop" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/bh-nextgen-crm.webp" alt="The old NextGen CRM dashboard with a sales funnel and a dense client table" loading="lazy" decoding="async"></figure></div>
         <p class="cap">Before: NextGen's loan workflow and CRM.</p>
       </div>
@@ -1337,31 +1347,31 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Rebrand</span><h2>From NextGen to Unify</h2></div>
       <div class="body">
-        <p>"NextGen" described a moment in time. "Unify" describes the promise: one workflow from application to close. I helped shape the new identity and applied it across the product, social and sales materials so customers saw one brand everywhere.</p>
+        <p>"NextGen" described a moment in time. "Unify" describes the promise: one workflow from application to close. I helped shape the new identity and rolled it out across the product, social and sales materials, so customers see one brand everywhere.</p>
         <figure class="shot media"><img src="work/bh-unify-navigation.webp" alt="Unify's new navigation: Banker, Lending and Portfolio workspaces next to the Lending overview on a laptop" loading="lazy" decoding="async"></figure>
       </div>
     </section>
 
     <section class="chapter">
-      <div><span class="label">Social media</span><h2>The new look, in people's feeds</h2></div>
+      <div><span class="label">Social media</span><h2>The new look, in the feed</h2></div>
       <div class="body">
-        <p>I also design Baker Hill's social graphics, so the brand shows up the same way in a LinkedIn feed as it does in the product.</p>
+        <p>I also design Baker Hill's social graphics, so a LinkedIn post feels like the product: same colors, same type, same personality.</p>
         <figure class="shot media"><img src="work/bh-bh-social-media-cover.webp" alt="Baker Hill social media graphics" loading="lazy" decoding="async"></figure>
       </div>
     </section>
 
     <section class="chapter">
-      <div><span class="label">Design system</span><h2>One set of parts for dense lending data</h2></div>
+      <div><span class="label">Design system</span><h2>Built for dense lending data</h2></div>
       <div class="body">
-        <p>Loan origination is tables, long forms and status at every step. I built the shared foundations first (color and type variables, text styles and a 12-column grid), then the components lenders touch most: data tables, form fields, filters and status chips. Now new features start from one up-to-date system instead of old one-off screens.</p>
+        <p>I helped bring the Chief Design Officer's vision to life, working alongside the creative director and senior designers. Loan software is tables, long forms and status updates at every step, so we started with the foundations (color and type variables, text styles, a 12-column grid), then built what lenders touch most: data tables, form fields, filters and status chips. New features now start from one shared system, not an old one-off screen.</p>
         <figure class="shot media"><img src="work/bh-design-system.webp" alt="Unify Figma library: color and font variables, theme color styles, text styles, an icon set and 12-column layout grids" loading="lazy" decoding="async"></figure>
       </div>
     </section>
 
     <section class="chapter">
-      <div><span class="label">UI + UX overhaul</span><h2>Clearer screens, on every device</h2></div>
+      <div><span class="label">UI + UX overhaul</span><h2>Clearer screens, on any device</h2></div>
       <div class="body">
-        <p>With the system in place, I redesigned core flows like opportunities and the loan application so the next action is always obvious. Light and dark themes, plus tablet and mobile layouts, let loan officers work the way they already do: at a desk, in a branch or with a borrower.</p>
+        <p>With the system in place, I redesigned core flows like opportunities and the loan application so the next step is always obvious. I added new components, navigation and a dark mode, plus tablet and mobile layouts, so loan officers can work at a desk, in a branch or across the table from a borrower. Key lending tasks that used to take an hour now take under 30 minutes.</p>
         <figure class="shot media"><video src="work/bh-nav-prototype.mp4" poster="work/bh-nav-prototype-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Unify navigation prototype: moving between workspaces, opening a deal, then switching to dark mode"></video></figure>
         <figure class="shot media"><img src="work/bh-unify-light-dark.webp" alt="The Deal Navigator credit analysis screen in light and dark mode" loading="lazy" decoding="async"></figure>
         <div class="shots two"><figure class="shot media"><img src="work/bh-unify-mock-ipad.webp" alt="Unify sign-in on a tablet" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/bh-unify-mock-mobile.webp" alt="Unify sign-in on a phone" loading="lazy" decoding="async"></figure></div>
@@ -1369,9 +1379,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     </section>
 
     <section class="chapter">
-      <div><span class="label">Cross-team features</span><h2>AskBKR: answers without leaving the workflow</h2></div>
+      <div><span class="label">Cross-team features</span><h2>AskBKR: answers without leaving the flow</h2></div>
       <div class="body">
-        <p>I partnered with product and engineering on features across the platform. One was AskBKR, an AI assistant built into Unify, so lenders can ask about a policy or a loan without opening another tool. Suggested prompts help first-time users know what to ask.</p>
+        <p>I partner with product and engineering on features across the platform. One is AskBKR, an AI assistant inside Unify, so lenders can ask about a policy or a loan without opening another tool. Suggested prompts show first-timers what to ask.</p>
+        <p>I also wrote training guides for the client user board to ease the move to Unify, and I build interactive demos in Supademo so sales can show the platform to prospective banks and credit unions.</p>
         <div class="shots two"><figure class="shot media"><img src="work/bh-ask-bkr-open.webp" alt="AskBKR assistant with suggested prompts" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/bh-ask-bkr-chat-start.webp" alt="AskBKR conversation" loading="lazy" decoding="async"></figure></div>
       </div>
     </section>
@@ -1379,8 +1390,8 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">RISE 2026</span><h2>Bringing it to the customers</h2></div>
       <div class="body">
-        <p>RISE is Baker Hill's annual lending conference. I worked with marketing, sales and product to design the event's experience and materials around the new Unify story. The result: more deals won and a strong NPS from attendees.</p>
-        <div class="todo"><b>Add the numbers and photos.</b> NPS score, deals influenced, attendance, plus 2–3 event photos or slides. Numbers here are what recruiters remember.</div>
+        <p>RISE is Baker Hill's annual lending conference. For RISE 2026 I designed the full campaign around the Unify story: digital ads at San Antonio International Airport, on-stage presentations, event banners, and assets that keynote speaker Kevin O'Leary shared on LinkedIn.</p>
+        <div class="todo"><b>Add photos.</b> 2–3 shots of the airport ads, stage and banners. If you have attendance or NPS numbers you're happy to share, add those too.</div>
       </div>
     </section>
 
@@ -1402,7 +1413,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <header class="case-hero">
       <p class="eyebrow">Rally · iOS app · 2024</p>
       <h1>Turning the urge to volunteer into a booked shift</h1>
-      <p class="sum">Rally helps people in Dallas–Fort Worth find and schedule local volunteering. Existing sites list opportunities but leave out the logistics busy people need before committing, so I led a mobile design built around at-a-glance details and one-tap booking.</p>
+      <p class="sum">Rally helps people in Dallas–Fort Worth find and book local volunteering. Existing sites list opportunities but skip the details busy people need before saying yes. In an IBM-sponsored design sprint at Dialexa, I led the design of a mobile app built around at-a-glance info and one-tap booking.</p>
     </header>
     <dl class="meta">
       <div><dt>Role</dt><dd>Lead Product Designer</dd></div>
@@ -1415,10 +1426,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">The problem</span><h2>People want to help. Then they don't sign up.</h2></div>
       <div class="body">
-        <p>There's a large gap between intending to volunteer and actually doing it. Current platforms work like bulletin boards and lack the scheduling busy professionals need to commit with confidence.</p>
+        <p>Plenty of people mean to volunteer and never do. Current platforms work like bulletin boards, with none of the scheduling busy professionals need to commit with confidence.</p>
         <ul>
-          <li><b>Business need:</b> centralize opportunities to raise community engagement and reduce friction for local nonprofits.</li>
-          <li><b>User need:</b> clear, at-a-glance schedules and requirements so intent becomes action.</li>
+          <li><b>Business need:</b> bring opportunities into one place to boost community engagement and cut friction for local nonprofits.</li>
+          <li><b>User need:</b> clear schedules and requirements at a glance, so good intentions turn into signups.</li>
         </ul>
       </div>
     </section>
@@ -1427,7 +1438,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       <div><span class="label">Research</span><h2>The barrier was uncertainty, not interest</h2></div>
       <div class="body">
         <div class="stats" style="grid-template-columns:minmax(0,1fr);margin:0"><div class="stat"><b>50–70%</b><span>of volunteers quit within their first year</span></div></div>
-        <p>We paired industry data on the $3.7B volunteer management market with small, deep-dive interviews. People dropped off when a listing didn't say how long it would take or what to expect on the day: parking, gear, tasks.</p>
+        <p>We paired industry data on the $3.7B volunteer management market with short, in-depth interviews. People bailed when a listing didn't say how long it would take or what to expect on the day: parking, gear, tasks.</p>
         <p>So every opportunity card answers who, what, where and when at a glance.</p>
         <div class="shots two"><figure class="shot media"><img src="work/rally-quotes.webp" alt="Interview quotes about finding local volunteer events" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/rally-empathy.webp" alt="Empathy map: what volunteers say, do, think and feel" loading="lazy" decoding="async"></figure></div><figure class="shot media"><img src="work/rally-journey.webp" alt="Volunteer journey map from motivation to retention, with a dip at logistics" loading="lazy" decoding="async"></figure>
       </div>
@@ -1436,7 +1447,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Competitors</span><h2>Big databases, then an "email wall"</h2></div>
       <div class="body">
-        <p>Platforms like VolunteerMatch have huge nonprofit databases but favor quantity over clarity. Signing up usually means manual email back-and-forth, which turns a quick yes into a multi-day wait.</p>
+        <p>Platforms like VolunteerMatch have huge nonprofit databases but favor quantity over clarity. Signing up usually means emailing back and forth, which turns a quick yes into a multi-day wait.</p>
         <figure class="shot media"><img src="work/rally-competitors.webp" alt="Digital Cheetah, MeetUp and VolunteerMatch compared, with ratings and pain points" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/rally-competitive.webp" alt="VolunteerMatch app screens annotated with friction points" loading="lazy" decoding="async"></figure>
         <div class="callout">How might we help Dallas residents understand what local shelters need, and make volunteering or donating feel seamless?</div>
       </div>
@@ -1445,9 +1456,9 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Process</span><h2>Must-know details first</h2></div>
       <div class="body">
-        <p>The user flow puts parking, attire and task descriptions up front, cutting the back-and-forth that causes drop-off. Volunteers reach "Commit" already knowing what they're signing up for.</p>
+        <p>Our user flow puts parking, attire and tasks up front, which cuts the back-and-forth that causes drop-off. Volunteers reach "Commit" already knowing what they're signing up for.</p>
         <figure class="shot media"><img src="work/rally-flow.webp" alt="User flow with happy, alternate and error paths through sign-up" loading="lazy" decoding="async"></figure>
-        <p>We sketched fast, with everyone contributing ideas in short rounds, then moved to mid-fidelity so senior designers and developers could react early. Testing logistics-heavy layouts as functional mocks let us refine navigation in real time.</p>
+        <p>We sketched fast, with everyone adding ideas in short rounds, then moved to mid-fidelity so senior designers and developers could weigh in early. Testing logistics-heavy layouts as working mocks helped us refine the navigation as we went.</p>
         <figure class="shot media"><img src="work/rally-sketches.webp" alt="Paper sketches and sticky-note rounds" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/rally-lofi.webp" alt="Low-fidelity screens with feedback notes" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/rally-design-system.webp" alt="Rally branding: logo, Urbanist type, purple palette, buttons and Material icons" loading="lazy" decoding="async"></figure>
       </div>
     </section>
@@ -1456,7 +1467,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       <div><span class="label">The solution</span><h2>From discovery to day-of, in one place</h2></div>
       <div class="body">
         <ul>
-          <li><b>Curated feed.</b> Opportunities ranked by your interests, location and real-time urgency.</li>
+          <li><b>Curated feed.</b> Opportunities ranked by your interests, your location and how urgently help is needed.</li>
           <li><b>Advanced filters.</b> Narrow by skill, cause and availability.</li>
           <li><b>One-tap booking.</b> Secure a shift without the email wall.</li>
         </ul>
@@ -1467,7 +1478,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Outcome</span><h2>A directory became a retention tool</h2></div>
       <div class="body">
-        <p>Reviewers rated the final designs highly for reducing friction and bringing clarity to a cluttered space. Solving the email wall and surfacing logistics up front turned a fragmented, manual process into one that respects volunteers' time.</p>
+        <p>Reviewers rated the final designs highly for cutting friction and clearing up a cluttered space. Fixing the email wall and putting logistics up front turned a scattered, manual process into one that respects volunteers' time.</p>
         <figure class="shot media"><img src="work/rally-presentation.webp" alt="The Rally team presenting final designs on stage" loading="lazy" decoding="async"></figure>
         <div class="todo"><b>Add a reflection.</b> One thing you'd do differently, or one trade-off you made and why. Hiring managers read this part closely.</div>
       </div>
@@ -1484,7 +1495,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <header class="case-hero">
       <p class="eyebrow">GOBankingRates · 2024</p>
       <h1>Making money advice feel approachable on social</h1>
-      <p class="sum">GOBankingRates shares financial advice, tips and stories. I helped strengthen its brand presence and build a social strategy that paired engaging visuals with relatable money insights.</p>
+      <p class="sum">GOBankingRates shares money advice, tips and stories. I helped sharpen its brand on social and build a strategy that pairs eye-catching visuals with money insights people can relate to.</p>
     </header>
     <dl class="meta">
       <div><dt>Role</dt><dd>Design Assistant Intern</dd></div>
@@ -1501,7 +1512,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Strategy</span><h2>How do we connect more closely with followers?</h2></div>
       <div class="body">
-        <p>I set up a tight feedback loop with the social leads and co-created content pillars in FigJam. Then I turned audience insights into flexible templates that stayed on-brand but could react quickly to money news.</p>
+        <p>I set up a tight feedback loop with the social leads and co-created content pillars in FigJam. Then I turned audience insights into flexible templates that stayed on-brand but could move fast on money news.</p>
         <figure class="shot media"><img src="work/gbr-research-1.webp" alt="Brand, goals and content pillars mapped in FigJam" loading="lazy" decoding="async"></figure>
       </div>
     </section>
@@ -1509,7 +1520,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Gameplan</span><h2>Let the data pick the formats</h2></div>
       <div class="body">
-        <p>We studied how our audience behaved and which posts performed, to find the visual formats that resonated. I helped build a content calendar that kept design and social output steady.</p>
+        <p>We looked at how our audience behaved and which posts performed, to find the formats that worked. I helped build a content calendar that kept design and social output steady.</p>
         <div class="shots two wide-first"><figure class="shot media"><img src="work/gbr-research-2.webp" alt="Platform strategy board" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/gbr-content-calendar.webp" alt="Content calendar game plan" loading="lazy" decoding="async"></figure></div>
       </div>
     </section>
@@ -1517,7 +1528,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Design</span><h2>Visualizing financial life stages</h2></div>
       <div class="body">
-        <p>I made custom icons, type hierarchies and chart styles that felt authoritative but friendly.</p>
+        <p>I made custom icons, type hierarchies and chart styles that feel authoritative but friendly.</p>
         <ul>
           <li><b>Actionable advice.</b> High-contrast "Daily Tips" layouts that stay legible on small phones.</li>
           <li><b>Data storytelling.</b> Simplified charts that make market trends easy to digest.</li>
@@ -1530,10 +1541,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Podcast</span><h2>"What the Why": from one-way content to a conversation</h2></div>
       <div class="body">
-        <p>Listeners send in money questions that the hosts answer live. I designed the podcast's landing page around discovery and conversion, so people can listen, subscribe and submit a question in one place, and kept it consistent across social.</p>
+        <p>Listeners send in money questions and the hosts answer them live. I designed the podcast's landing page for discovery and signups, so people can listen, subscribe and submit a question in one place, and I kept the look consistent on social.</p>
         <p><a href="https://www.gobankingrates.com/what-the-why-podcast/#hosts" target="_blank" rel="noopener">See the live page</a></p>
         <figure class="shot media"><video src="work/gbr-podcast-page.mp4" poster="work/gbr-podcast-page-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="What the Why landing page walkthrough"></video></figure>
-        <p>I also built Instagram templates from the brand's core elements, so the social team could turn episode highlights and guest quotes into short-form posts quickly.</p>
+        <p>I also built Instagram templates from the brand's core elements, so the social team could turn episode highlights and guest quotes into short posts fast.</p>
         <figure class="shot media"><img src="work/gbr-whatthewhy-social-1.webp" alt="Meet your hosts carousel" loading="lazy" decoding="async"></figure><div class="shots two"><figure class="shot media"><img src="work/gbr-whatthewhy-social-4.webp" alt="Episode announcement stories" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/gbr-whatthewhy-social-2.webp" alt="Episode quote posts" loading="lazy" decoding="async"></figure></div><figure class="shot media"><video src="work/gbr-whatthewhy-social-3.mp4" poster="work/gbr-whatthewhy-social-3-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated podcast posts"></video></figure>
       </div>
     </section>
@@ -1549,7 +1560,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <header class="case-hero">
       <p class="eyebrow">Chatbooks · 2024</p>
       <h1>Getting family photos off phones and into books</h1>
-      <p class="sum">People take thousands of photos that never leave their phones. Working within Chatbooks' brand guidelines, I made social content and ads that show how easy it is to keep family stories.</p>
+      <p class="sum">Most of us have thousands of photos that never leave our phones. Working within Chatbooks' brand guidelines, I made social content and ads that show how easy it is to turn them into keepsakes.</p>
     </header>
     <dl class="meta">
       <div><dt>Role</dt><dd>Graphic Design Intern</dd></div>
@@ -1566,7 +1577,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Paid + in-feed</span><h2>Ads that feel like memories</h2></div>
       <div class="body">
-        <p>With the creative, social and marketing teams, I designed paid ads for Instagram, Facebook and Google alongside organic posts promoting Chatbooks' photo books, all within the brand's identity.</p>
+        <p>Working with the creative, social and marketing teams, I designed paid ads for Instagram, Facebook and Google, plus organic posts for Chatbooks' photo books, all within the brand identity.</p>
         <figure class="shot media"><img src="work/cb-social-1.webp" alt="Grid of Chatbooks ads and in-feed posts" loading="lazy" decoding="async"></figure><div class="shots two"><figure class="shot media"><img src="work/cb-social-3.webp" alt="Turn moments into memories ad" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/cb-social-4.webp" alt="Giveaway and engagement posts" loading="lazy" decoding="async"></figure></div><figure class="shot media"><img src="work/cb-social-2.webp" alt="Photo books as a teenager vs as an adult post" loading="lazy" decoding="async"></figure>
       </div>
     </section>
@@ -1574,7 +1585,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Mother's Day 2024</span><h2>Warm, nostalgic, and built to convert</h2></div>
       <div class="body">
-        <p>I helped build the in-house campaign: ads, in-feed posts and an email newsletter centered on love, family and keepsake memories.</p>
+        <p>I helped build the in-house campaign: ads, in-feed posts and an email newsletter, all about love, family and keepsake memories.</p>
         <div class="shots two"><figure class="shot media reel"><video src="work/cb-mothersday-reel.mp4" poster="work/cb-mothersday-reel-poster.jpg" controls playsinline preload="metadata" aria-label="Mother's Day campaign reel"></video></figure><div class="stack"><figure class="shot media"><video src="work/cb-social-mothersday-1.mp4" poster="work/cb-social-mothersday-1-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mother's Day flash sale stories"></video></figure><figure class="shot media"><video src="work/cb-mothersday-2.mp4" poster="work/cb-mothersday-2-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mother's Day email on laptop and phone"></video></figure></div></div>
         <figure class="shot media"><img src="work/cb-mothersday-4.webp" alt="Mother's Day engagement post" loading="lazy" decoding="async"></figure>
       </div>
@@ -1583,7 +1594,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Custom photo book</span><h2>My cover, on the shelf</h2></div>
       <div class="body">
-        <p>Beyond marketing, I pitched an original cover for the limited-edition Mother's Day collection. It was picked and sold on chatbooks.com alongside the core creative team's designs.</p>
+        <p>Beyond marketing, I pitched an original cover for the limited-edition Mother's Day collection. It was picked and sold on chatbooks.com next to the core creative team's designs.</p>
         <div class="shots two"><figure class="shot media"><img src="work/cb-book-cover-design02.webp" alt="Best Mom Ever floral photo book cover" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/cb-book-cover-design01.webp" alt="The cover live on the Chatbooks store" loading="lazy" decoding="async"></figure></div>
       </div>
     </section>
@@ -1591,7 +1602,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <section class="chapter">
       <div><span class="label">Father's Day 2024</span><h2>Same brand, different energy</h2></div>
       <div class="body">
-        <p>Where Mother's Day leaned nostalgic, Father's Day was meant to feel vibrant and fun, celebrating dads and father figures.</p>
+        <p>Where Mother's Day felt nostalgic, Father's Day was meant to feel vibrant and fun, a celebration of dads and father figures.</p>
         <div class="shots two"><figure class="shot media"><img src="work/cb-fathersday-1.webp" alt="Father's Day Instagram ads" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/cb-fathersday-2.webp" alt="Father's Day contest posts" loading="lazy" decoding="async"></figure></div><div class="shots two"><figure class="shot media"><img src="work/cb-fathersday-3.webp" alt="Favorite memory with dad engagement post" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/cb-fathersday-4.webp" alt="Which persona matches your dad post" loading="lazy" decoding="async"></figure></div>
       </div>
     </section>
