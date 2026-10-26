@@ -1005,6 +1005,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 
 /* About intro: sit the copy beside the middle of the photo instead of leaving a gap underneath */
 @media (min-width: 861px) { .about-copy { align-self: center; } }
+
+/* Title screen: a visible way to go straight to the work */
+.gate-skip { display: inline-block; margin-top: 8px; padding: 8px 14px; border: 2px solid var(--ink); border-radius: 999px; background: var(--cream); font-family: var(--pixel); font-size: 14px; letter-spacing: .03em; }
+.gate:hover .gate-skip { background: var(--paper); }
 </style>
 </head>
 <body>
@@ -1035,6 +1039,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       <span class="gate-eyebrow">Anh's Sanctuary</span>
       <span class="gate-title">Press any key to come in</span>
       <span class="gate-note">Sound on. You can mute it anytime.</span>
+      <span class="gate-skip" data-skip>Skip to my work →</span>
     </span>
   </button>
   <div class="dialog" id="dialog">
@@ -1368,6 +1373,17 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <figure class="shot media"><img src="work/bh-unify-los-new-mockup-1.webp" alt="Unify loan origination dashboard on a laptop" loading="lazy" decoding="async"></figure>
 
     <section class="chapter">
+      <div><span class="label">My role</span><h2>What I led, and what we built together</h2></div>
+      <div class="body">
+        <ul>
+          <li><b>Led:</b> the UX/UI redesign of Unify's core lending flows, from opportunities to the loan application.</li>
+          <li><b>Designed:</b> new components, navigation and dark mode on top of the system, plus training guides, sales demos, social graphics and the RISE 2026 campaign.</li>
+          <li><b>Built with the team:</b> the rebrand and the design system, alongside the creative director and senior designers, guided by the Chief Design Officer's vision.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="chapter">
       <div><span class="label">The starting point</span><h2>A product that grew one screen at a time</h2></div>
       <div class="body">
         <p>NextGen had grown feature by feature. Buttons, tables and spacing changed from screen to screen, so lenders had to relearn the product at every step. The few shared components were dated and undocumented, so designers and engineers kept rebuilding the same things.</p>
@@ -1407,6 +1423,19 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
         <figure class="shot media"><video src="work/bh-nav-prototype.mp4" poster="work/bh-nav-prototype-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Unify navigation prototype: moving between workspaces, opening a deal, then switching to dark mode"></video></figure>
         <figure class="shot media"><img src="work/bh-unify-light-dark.webp" alt="The Deal Navigator credit analysis screen in light and dark mode" loading="lazy" decoding="async"></figure>
         <div class="shots two"><figure class="shot media"><img src="work/bh-unify-mock-ipad.webp" alt="Unify sign-in on a tablet" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/bh-unify-mock-mobile.webp" alt="Unify sign-in on a phone" loading="lazy" decoding="async"></figure></div>
+      </div>
+    </section>
+
+    <section class="chapter">
+      <div><span class="label">Design decisions</span><h2>The calls that shaped it</h2></div>
+      <div class="body">
+        <ul>
+          <li><b>Foundations before components.</b> Shared variables, text styles and a grid went in first, so every component after them inherited the same rules.</li>
+          <li><b>Start with what lenders touch most.</b> Data tables, form fields, filters and status chips cover most of a lender's day, so they came first.</li>
+          <li><b>One obvious next step.</b> In opportunities and the loan application, each screen is built around the action a lender needs to take next.</li>
+          <li><b>Design for where lenders work.</b> Light and dark themes and tablet and mobile layouts, because lenders move between a desk, a branch and the borrower's side of the table.</li>
+          <li><b>Help first-timers get started.</b> AskBKR's suggested prompts show new users what to ask.</li>
+        </ul>
       </div>
     </section>
 
@@ -1884,7 +1913,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       document.removeEventListener("keydown", openGate, true);
       startDialog();
     };
-    gate.addEventListener("click", openGate);
+    gate.addEventListener("click", function (e) { var skip = e.target.closest && e.target.closest("[data-skip]"); openGate(e); if (skip) location.hash = "#work"; });
     document.addEventListener("keydown", openGate, true);
   } else {
     startDialog();
