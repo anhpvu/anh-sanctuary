@@ -1612,11 +1612,9 @@ svg.pxi { fill: none; stroke: none !important; }
     root.setAttribute("data-mode", m);
     lights.setAttribute("aria-pressed", String(m === "dark"));
     lights.setAttribute("aria-label", m === "dark" ? "Turn the lights on (light mode)" : "Turn the lights off (dark mode)");
-    store("mode", m);
   }
-  var savedMode = load("mode");
-  var hourNow = new Date().getHours();
-  setMode(savedMode || (hourNow >= 19 || hourNow < 6 ? "dark" : "light"));
+  // Always opens in light mode; the Lights key switches it for the visit.
+  setMode("light");
   lights.addEventListener("click", function () {
     setMode(root.getAttribute("data-mode") === "dark" ? "light" : "dark");
     blip(330, 0.08);
