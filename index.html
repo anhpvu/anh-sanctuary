@@ -1023,6 +1023,14 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .li-link span { font-size: 15px; font-weight: 500; color: var(--ink-soft); }
 
 .chapter .body > .rise-sub { grid-column: 1 / -1; max-width: 60ch; margin-top: -6px; color: var(--ink-soft); font-size: 17px; }
+
+/* Sound toggle sits beside the mood pill, off by default */
+.mood-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.sound-pill { padding: 0 14px 0 10px; }
+.sound-pill svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; fill: none; }
+.sound-pill .x { display: none; }
+.sound-pill.muted .x { display: block; }
+.sound-pill.muted .wave { display: none; }
 </style>
 </head>
 <body>
@@ -1052,7 +1060,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <span class="gate-card">
       <span class="gate-eyebrow">Anh's Sanctuary</span>
       <span class="gate-title">Press any key to come in</span>
-      <span class="gate-note">Sound on. You can mute it anytime.</span>
+      <span class="gate-note">Sound is off. Turn it on anytime from the speaker button.</span>
       <span class="gate-skip" data-skip>Skip to my work →</span>
     </span>
   </button>
@@ -1218,9 +1226,8 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
         <p class="mn-sub">Quick cheat sheet:</p>
         <ul>
           <li><kbd role="button" tabindex="0" data-mk="l">L</kbd> turns the lights off (not <kbd role="button" tabindex="0" data-mk="i">I</kbd>!)</li>
-          <li><kbd role="button" tabindex="0" data-mk="m">M</kbd> mutes clicks (if you're at work 😉)</li>
           <li><kbd role="button" tabindex="0" data-mk="r">R</kbd> opens my resume</li>
-          <li><kbd role="button" tabindex="0" data-mk="c">C</kbd> changes the room’s mood</li>
+          <li><kbd role="button" tabindex="0" data-mk="m">M</kbd> changes the room’s mood</li>
           <li><span class="k-range">1–5</span> or click glowing items to explore</li>
         </ul>
       </div>
@@ -1747,7 +1754,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="twilight"><span class="sw" style="--a:#C8C0E8;--b:#51409F"></span>Twilight</button>
     <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="midnight"><span class="sw" style="--a:#19244F;--b:#F6C46A"></span>Midnight</button>
   </div>
-  <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span>Mood</button>
+  <div class="mood-row">
+    <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span>Mood</button>
+    <button type="button" class="mood-pill sound-pill muted" id="sound-pill" aria-pressed="false" aria-label="Turn sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path class="wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="x" d="M16 9.5l5 5M21 9.5l-5 5"/></svg><span class="sp-t">Sound off</span></button>
+  </div>
 </div>
 
 
@@ -1820,9 +1830,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
   document.addEventListener("mood:cycle", function () { setMood(MOODS[(MOODS.indexOf(curMood) + 1) % MOODS.length]); blip(620, 0.06); });
 
   /* ---------- Sound: tiny game blips made in the browser ---------- */
-  var ctx = null, soundOn = load("sound") !== "off";
+  var ctx = null, soundOn = load("sound") === "on";
   var soundBtn = document.getElementById("sound");
-  function syncSoundBtn() { soundBtn.setAttribute("aria-pressed", String(soundOn)); soundBtn.setAttribute("aria-label", soundOn ? "Mute sounds" : "Turn sounds on"); soundBtn.classList.toggle("muted", !soundOn); }
+  var soundPill = document.getElementById("sound-pill");
+  function syncSoundBtn() { soundBtn.setAttribute("aria-pressed", String(soundOn)); soundBtn.setAttribute("aria-label", soundOn ? "Mute sounds" : "Turn sounds on"); soundBtn.classList.toggle("muted", !soundOn); if (soundPill) { soundPill.setAttribute("aria-pressed", String(soundOn)); soundPill.setAttribute("aria-label", soundOn ? "Turn sound off" : "Turn sound on"); soundPill.classList.toggle("muted", !soundOn); soundPill.querySelector(".sp-t").textContent = soundOn ? "Sound on" : "Sound off"; } }
   syncSoundBtn();
   function unlock() {
     if (!ctx) { try { ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { ctx = null; } }
@@ -1840,6 +1851,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     o.connect(g); g.connect(ctx.destination);
     o.start(t); o.stop(t + (len || 0.05) + 0.02);
   }
+  if (soundPill) soundPill.addEventListener("click", function (e) { e.stopPropagation(); soundBtn.click(); });
   soundBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     soundOn = !soundOn; store("sound", soundOn ? "on" : "off"); syncSoundBtn();
@@ -2119,10 +2131,9 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       var m = k.getAttribute("data-mk");
       blip(220, 0.03);
       if (m === "l") document.getElementById("lights").click();
-      else if (m === "m") soundBtn.click();
+      else if (m === "m") document.dispatchEvent(new Event("mood:cycle"));
       else if (m === "r") document.querySelector('.slot[data-spot="resume"]').click();
       else if (m === "i") { blip(180, 0.08); }
-      else if (m === "c") document.dispatchEvent(new Event("mood:cycle"));
     }
     k.addEventListener("click", fire);
     k.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); fire(); } });
@@ -2137,10 +2148,9 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     var t = e.target;
     if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
     var key = (e.key || "").toLowerCase();
-    if (key === "m" && !e.repeat) { e.preventDefault(); soundBtn.click(); return; }
-    if (key === "c" && !e.repeat) { e.preventDefault(); document.dispatchEvent(new Event("mood:cycle")); return; }
+    if (key === "s" && !e.repeat) { e.preventDefault(); soundBtn.click(); return; }
+    if (key === "m" && !e.repeat) { e.preventDefault(); document.dispatchEvent(new Event("mood:cycle")); return; }
     if (key === "r") key = "3";
-    if (key === "s") key = "5";
     var slot = document.querySelector('.slot[data-key="' + key + '"]');
     if (slot && !e.repeat) {
       e.preventDefault();
