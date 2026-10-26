@@ -973,6 +973,15 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
   .case-hero h1 { grid-column: 1; }
   .case-hero .sum { grid-column: 2; max-width: none; font-size: 19px; line-height: 1.55; margin-top: 6px; }
 }
+
+/* RISE: keynote photo beside the LinkedIn post */
+.chapter .body > .rise-media { grid-column: 1 / -1; max-width: none; }
+.rise-media { display: grid; grid-template-columns: minmax(0, 1fr) 504px; gap: 20px; align-items: start; }
+.rise-media .shot { margin: 0; }
+.rise-media .shot img { width: 100%; height: auto; display: block; }
+.li-embed { border-radius: 18px; overflow: hidden; background: #fff; }
+.li-embed iframe { display: block; width: 100%; height: 640px; border: 0; }
+@media (max-width: 1100px) { .rise-media { grid-template-columns: minmax(0, 1fr); } .li-embed { max-width: 504px; } }
 </style>
 </head>
 <body>
@@ -1391,7 +1400,8 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
       <div><span class="label">RISE 2026</span><h2>Bringing it to the customers</h2></div>
       <div class="body">
         <p>RISE is Baker Hill's annual lending conference. For RISE 2026 I designed the full campaign around the Unify story: digital ads at San Antonio International Airport, on-stage presentations, event banners, and assets that keynote speaker Kevin O'Leary shared on LinkedIn.</p>
-        <div class="todo"><b>Add photos.</b> 2–3 shots of the airport ads, stage and banners. If you have attendance or NPS numbers you're happy to share, add those too.</div>
+        <div class="rise-media"><figure class="shot media"><img src="work/bh-rise-keynote.webp" alt="A packed ballroom at RISE 2026 watching a keynote under a Baker Hill stage screen reading Where AI is heading in lending" loading="lazy" decoding="async"></figure><div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7456073319293825025?collapsed=1" title="LinkedIn post about the RISE 2026 campaign and San Antonio airport banners" loading="lazy" frameborder="0" allowfullscreen></iframe></div></div>
+        <p class="cap">RISE 2026 keynote, and the LinkedIn post with the San Antonio airport banners.</p>
       </div>
     </section>
 
