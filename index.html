@@ -948,7 +948,7 @@ svg.pxi { fill: none; stroke: none !important; }
 
 .mood { position: fixed; z-index: 41; left: max(16px, env(safe-area-inset-left, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
   display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-inset-bottom, 0px)) + 56px); }
+body:has(#view-home:not([hidden])) .mood { left: var(--mood-left, calc(max(16px, env(safe-area-inset-left, 0px)) + 176px)); }
 .mood-pill { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 10px; border-radius: 999px; cursor: pointer;
   background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 0 3px 0 var(--ink); font-family: var(--pixel); font-size: 14px; }
 .mood-pill:hover { transform: translateY(-1px); }
@@ -1031,6 +1031,13 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .sound-pill .x { display: none; }
 .sound-pill.muted .x { display: block; }
 .sound-pill.muted .wave { display: none; }
+
+/* Phones: Mood and Sound shrink to icons so toolkit, mood and sound share one row */
+@media (max-width: 720px) {
+  .mood-pill { padding: 0; width: 44px; justify-content: center; }
+  .mood-pill .mp-t, .sound-pill .sp-t { display: none; }
+  .mood-row { flex-wrap: nowrap; }
+}
 </style>
 </head>
 <body>
@@ -1755,7 +1762,7 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <button type="button" class="mood-opt" role="radio" aria-checked="false" data-mood="midnight"><span class="sw" style="--a:#19244F;--b:#F6C46A"></span>Midnight</button>
   </div>
   <div class="mood-row">
-    <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span>Mood</button>
+    <button type="button" class="mood-pill" id="mood-pill" aria-expanded="false" aria-controls="mood-panel"><span class="sw" id="mood-sw" style="--a:#D3E8F7;--b:#B65A43"></span><span class="mp-t">Mood</span></button>
     <button type="button" class="mood-pill sound-pill muted" id="sound-pill" aria-pressed="false" aria-label="Turn sound on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" fill="currentColor"/><path class="wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/><path class="x" d="M16 9.5l5 5M21 9.5l-5 5"/></svg><span class="sp-t">Sound off</span></button>
   </div>
 </div>
@@ -1810,6 +1817,19 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     moodOpts.forEach(function (b) { b.setAttribute("aria-checked", String(b.getAttribute("data-mood") === name)); });
     moodSwEl.style.setProperty("--a", moodSw[name][0]); moodSwEl.style.setProperty("--b", moodSw[name][1]);
   }
+
+  // Home: Mood and Sound sit in one row with My toolkit, starting just after its right edge.
+  function positionMood() {
+    var tk = document.getElementById("tk-pill"), homeEl = document.getElementById("view-home");
+    if (!tk || !homeEl || homeEl.hidden) return;
+    var r = tk.getBoundingClientRect();
+    if (r.width) root.style.setProperty("--mood-left", Math.round(r.right + 10) + "px");
+  }
+  window.addEventListener("hashchange", positionMood);
+  window.addEventListener("resize", positionMood);
+  window.addEventListener("load", positionMood);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(positionMood);
+  positionMood();
   var hourNow = new Date().getHours();
   setMood(hourNow >= 19 || hourNow < 6 ? "midnight" : "midday");
   // The Lights key still flips between day and night (back to the last light mood you chose).
