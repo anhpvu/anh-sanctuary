@@ -1002,6 +1002,9 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 }
 @media (max-width: 560px) { .toc { top: calc(78px + env(safe-area-inset-top, 0px)); } }
 @media (max-width: 1000px) { .chapter > div:first-child { top: 170px; } }
+
+/* About intro: sit the copy beside the middle of the photo instead of leaving a gap underneath */
+@media (min-width: 861px) { .about-copy { align-self: center; } }
 </style>
 </head>
 <body>
