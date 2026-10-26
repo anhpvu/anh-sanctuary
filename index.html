@@ -983,6 +983,11 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .li-embed { border-radius: 18px; overflow: hidden; background: #fff; }
 .li-embed iframe { display: block; width: 100%; height: 640px; border: 0; }
 @media (max-width: 1100px) { .li-row { grid-template-columns: minmax(0, 504px); } }
+
+/* RISE gallery rows */
+.chapter .body > .shots.pvs.rise-wide { grid-column: 1 / -1; max-width: none; }
+.chapter .body > .shots.pvs.rise-wide.rise-16x9 { max-width: none; }
+.shots.pvs.rise-wide .shot.media img, .shots.pvs.rise-wide .shot.media video { width: 100%; height: auto; display: block; }
 </style>
 </head>
 <body>
@@ -1403,13 +1408,27 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
         <p>RISE is Baker Hill's annual lending conference. For RISE 2026 I designed the full campaign around the Unify story: digital ads at San Antonio International Airport, on-stage presentations, event banners, and assets that keynote speaker Kevin O'Leary shared on LinkedIn.</p>
         <div class="rise-media"><figure class="shot media"><img src="work/bh-rise-keynote.webp" alt="A packed ballroom at RISE 2026 watching a keynote under a Baker Hill stage screen reading Where AI is heading in lending" loading="lazy" decoding="async"></figure><div class="li-row"><div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7456073319293825025?collapsed=1" title="LinkedIn post about the RISE 2026 campaign and San Antonio airport banners" loading="lazy" frameborder="0" allowfullscreen></iframe></div><div class="li-embed"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7442541154568454144?collapsed=1" title="Kevin O'Leary's LinkedIn post about RISE 2026" loading="lazy" frameborder="0" allowfullscreen></iframe></div></div></div>
         <p class="cap">RISE 2026 keynote, the San Antonio airport banners, and keynote speaker Kevin O'Leary's post.</p>
+        <p>It started at the airport. Digital screens at San Antonio International greeted bankers as they landed, from "Welcome to Texas, y'all" to a preview of the keynote speaker.</p>
+        <div class="shots two" style="grid-template-columns:1.778fr .5625fr"><figure class="shot media"><video src="work/bh-rise-airport-arrivals.mp4" poster="work/bh-rise-airport-arrivals-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Digital screens in the San Antonio airport arrivals hall showing RISE welcome messages and the keynote speaker"></video></figure><figure class="shot media"><video src="work/bh-rise-airport-escalator.mp4" poster="work/bh-rise-airport-escalator-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="A RISE welcome banner above an airport escalator: Bankers! Welcome to Texas, y'all"></video></figure></div>
+        <p class="cap">San Antonio International Airport: arrivals hall screens and the escalator banner.</p>
+
+        <p>Then it followed them to the venue. QR totems kept the agenda a scan away, so attendees could download the R/SE app and plan their days.</p>
+        <div class="shots pvs rise-wide"><figure class="pv"><div class="shot media"><video src="work/bh-rise-totem-1.mp4" poster="work/bh-rise-totem-1-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Totem with a QR code to download the RISE app"></video></div><figcaption>Download the app</figcaption></figure><figure class="pv"><div class="shot media"><video src="work/bh-rise-totem-2.mp4" poster="work/bh-rise-totem-2-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Evening event totem outside the venue"></video></div><figcaption>Tonight's event</figcaption></figure><figure class="pv"><div class="shot media"><video src="work/bh-rise-totem-3.mp4" poster="work/bh-rise-totem-3-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Totem showing the conference agenda on a phone"></video></div><figcaption>Agenda, anytime</figcaption></figure></div>
+
+        <p>Around the hotel, "Lend better. Lend faster. Lend more." ran through the printed pieces, window decals and welcome banners, so the campaign felt like one thing wherever you looked.</p>
+        <div class="shots two" style="grid-template-columns:1.778fr .5625fr"><figure class="shot media"><img src="work/bh-rise-totems-wide.webp" alt="Three RISE LED totems reading Lend better, Lend faster and Lend more" loading="lazy" decoding="async"></figure><figure class="shot media"><img src="work/bh-rise-welcome-banner.webp" alt="A RISE banner reading Hey good lookin', welcome to TX" loading="lazy" decoding="async"></figure></div>
+        <div class="shots pvs rise-wide"><figure class="pv"><div class="shot media"><img src="work/bh-rise-print.webp" alt="A box of printed RISE pieces" loading="lazy" decoding="async"></div><figcaption>Printed pieces</figcaption></figure><figure class="pv"><div class="shot media"><img src="work/bh-rise-qr-cards.webp" alt="Stacks of RISE QR cards" loading="lazy" decoding="async"></div><figcaption>QR cards</figcaption></figure><figure class="pv"><div class="shot media"><img src="work/bh-rise-window-decals.webp" alt="Window decals reading Lend better, Lend faster, Lend more and BH" loading="lazy" decoding="async"></div><figcaption>Window decals</figcaption></figure></div>
+
+        <p>And on the main stage, the Unify story played out on the big screen.</p>
+        <div class="shots pvs rise-wide rise-16x9"><figure class="pv"><div class="shot media"><img src="work/bh-rise-slide-unify.webp" alt="A Unify product screen on the main stage screen" loading="lazy" decoding="async"></div><figcaption>Unify on the big screen</figcaption></figure><figure class="pv"><div class="shot media"><img src="work/bh-rise-slide-docs.webp" alt="A slide on the main stage screen showing a flow of documents" loading="lazy" decoding="async"></div><figcaption>More slides on stage</figcaption></figure><figure class="pv"><div class="shot media"><img src="work/bh-rise-photo-wall.webp" alt="A selfie in front of the Came. I saw. I RISE. photo wall" loading="lazy" decoding="async"></div><figcaption>The photo wall</figcaption></figure></div>
       </div>
     </section>
 
     <section class="chapter">
       <div><span class="label">What I learned</span><h2>A system is a team habit, not a file</h2></div>
       <div class="body">
-        <div class="todo"><b>Add a reflection.</b> One trade-off you made (for example, which components you shipped first and why) and what you'd do next.</div>
+        <p>If I could redo one thing, I'd spend more time researching design systems before building ours. Unify isn't one product. It's an ecosystem of several, and I'd want to know how other teams organize a system that has to serve all of them: what lives in the shared foundations, what belongs to a single product, and how to store it so it stays easy to find and easy to update.</p>
+        <p>I'd also look at how each role actually uses the system. Designers want fast components and clear rules. Engineers want specs that match the code. Product wants to see what already exists before asking for something new. Sales and marketing want it all to look like one brand. A system only works when it answers every one of them, so next time I'd talk to those people first, then decide how to store and document it.</p>
       </div>
     </section>
 
