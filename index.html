@@ -1080,6 +1080,8 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
 .dock .slot .lbl { font-size: 14px; letter-spacing: 0; color: var(--ink); }
 .dock .slot svg.pxi { width: 20px; height: 20px; }
 @media (max-width: 720px) { .lbl-x { display: none; } }
+/* Phones: the mail cheat sheet sits above the Lights, Mood and sound buttons so nothing covers its last line */
+@media (max-width: 860px) { .mailnote, .mailnote.floating { bottom: calc(76px + env(safe-area-inset-bottom, 0px)); z-index: 42; } }
 @media (max-width: 720px) {
   .dock { gap: 8px; }
   .dock .slot { width: 44px; padding: 0; justify-content: center; }
@@ -1943,7 +1945,7 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
     var gt = document.querySelector(".gate-title"); if (gt) gt.textContent = "Tap to come in";
     var mnSub = document.querySelector("#mailnote .mn-sub"); if (mnSub) mnSub.textContent = "A few quick tips:";
     var mnUl = document.querySelector("#mailnote ul");
-    if (mnUl) mnUl.innerHTML = "<li>Tap the keys at the top to jump to Work, About, Resume, Side quests or Say hi</li><li>Tap <b>Lights</b> to flip day and night, and <b>Mood</b> to change the time of day</li><li>Sound is off. Tap the speaker in the corner to turn it on</li><li>Tap anything that glows in the room to explore</li>";
+    if (mnUl) mnUl.innerHTML = "<li>Tap the keys at the top to jump to Work, About, Resume, Side quests, Say hi or My toolkit</li><li>Tap <b>Lights</b> to flip day and night, and <b>Mood</b> to change the time of day</li><li>Sound is off. Tap the speaker in the corner to turn it on</li><li>Tap anything that glows in the room to explore</li>";
     var cNote = document.querySelector(".chest-note"); if (cNote) cNote.textContent = "My everyday shortcuts. Tap a key or spin the knob.";
   }
   var box = document.getElementById("dialog"), out = document.getElementById("say"), more = document.getElementById("more");
