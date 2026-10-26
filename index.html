@@ -912,6 +912,8 @@ svg.pxi { fill: none; stroke: none !important; }
 .bt.wide { grid-column: span 2; }
 .bt.tall { grid-row: span 2; }
 .bt.w3 { grid-column: span 3; }
+.bt-vid { margin: 12px 0 0; overflow: hidden; border-radius: 16px; background: #FBF1E8; box-shadow: 0 10px 24px -16px rgba(59,44,36,.45); aspect-ratio: 1600 / 898; }
+.bt-vid video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
 .more-quests { margin-top: 24px; padding-top: 28px; border-top: 1px solid var(--rule); display: flex; flex-direction: column; gap: 12px; }
 .more-quests ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .more-quests li { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border-radius: 14px; background: var(--paper); border: 2px solid var(--ink); box-shadow: 0 4px 0 var(--ink); }
@@ -1256,7 +1258,8 @@ svg.pxi { fill: none; stroke: none !important; }
         <p class="q-lede">A sunny Hawaiian poke spot, designed end to end: logo, website, social, in-store menu screens, an ordering kiosk and storefront windows.</p>
         <ul class="q-tags" aria-label="Disciplines"><li>Branding</li><li>Web</li><li>Environmental</li></ul>
       </header>
-      <div class="bento"><figure class="bt big"><img src="work/sq-oahu-web.webp" alt="Oahu Poké website: a taste of Oahu in every bite" loading="lazy" decoding="async"></figure><figure class="bt wide"><img src="work/sq-oahu-store.webp" alt="Oahu Poké storefront with neon window graphics" loading="lazy" decoding="async"></figure><figure class="bt sq"><img src="work/sq-oahu-social.webp" alt="Oahu Poké Instagram profile and post" loading="lazy" decoding="async"></figure><figure class="bt tall"><img src="work/sq-oahu-tote.webp" alt="Oahu tote bag: this is your Oahu moment" loading="lazy" decoding="async"></figure><figure class="bt w3"><img src="work/sq-oahu-interior.webp" alt="Oahu Poké interior with menu screens, kiosk and order station" loading="lazy" decoding="async"></figure></div>
+      <div class="bento"><figure class="bt big"><img src="work/sq-oahu-web.webp" alt="Oahu Poké website: a taste of Oahu in every bite" loading="lazy" decoding="async"></figure><figure class="bt wide"><img src="work/sq-oahu-store.webp" alt="Oahu Poké storefront with neon window graphics" loading="lazy" decoding="async"></figure><figure class="bt sq"><img src="work/sq-oahu-social.webp" alt="Oahu Poké Instagram profile and post" loading="lazy" decoding="async"></figure><figure class="bt sq"><img src="work/sq-oahu-tote.webp" alt="Oahu tote bag: this is your Oahu moment" loading="lazy" decoding="async"></figure></div>
+      <figure class="bt-vid"><video src="work/sq-oahu-bowl.mp4" poster="work/sq-oahu-bowl-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Oahu Poké bowl rotating beside the Oahu logo"></video></figure>
     </article>
     <div class="more-quests">
       <p class="hats-k">More experiments</p>
@@ -2077,7 +2080,7 @@ svg.pxi { fill: none; stroke: none !important; }
 (function () {
   var lb = document.getElementById("lb"), stage = lb.querySelector(".lb-stage"), cap = lb.querySelector(".lb-cap"), num = lb.querySelector(".lb-n");
   var list = [], idx = 0, lastFocus = null;
-  function items(from) { var m = from.closest("main") || document; return Array.prototype.slice.call(m.querySelectorAll(".shot.media img, .shot.media video, .bt img")); }
+  function items(from) { var m = from.closest("main") || document; return Array.prototype.slice.call(m.querySelectorAll(".shot.media img, .shot.media video, .bt img, .bt-vid video")); }
   function show(i) {
     idx = (i + list.length) % list.length;
     var src = list[idx], el;
@@ -2092,7 +2095,7 @@ svg.pxi { fill: none; stroke: none !important; }
   function close() { lb.hidden = true; stage.innerHTML = ""; document.documentElement.style.overflow = ""; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   document.addEventListener("click", function (e) {
     if (!lb.hidden) return;
-    var t = e.target.closest && e.target.closest(".case .shot.media img, .case .shot.media video, .bento .bt img");
+    var t = e.target.closest && e.target.closest(".case .shot.media img, .case .shot.media video, .bento .bt img, .bt-vid video");
     if (!t) return;
     if (t.tagName === "VIDEO" && t.controls) { var r = t.getBoundingClientRect(); if (e.clientY > r.bottom - 48) return; }
     e.preventDefault(); open(t);
