@@ -318,7 +318,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 420px) { .slot { width: 42px; } .tray-gap { margin-left: 4px; } .slot .lbl { font-size: 9px; } }
 
 /* ---------- Work page: let the projects shine ---------- */
-.work-layout { max-width: 1400px; display: grid; grid-template-columns: minmax(200px, 3fr) minmax(0, 9fr); gap: 32px 48px; padding-block: 32px 48px; align-items: start; }
+.work-layout { max-width: 1560px; display: grid; grid-template-columns: minmax(180px, 2fr) minmax(0, 10fr); gap: 32px 40px; padding-block: 32px 48px; align-items: start; }
 .work-intro { position: sticky; top: calc(100px + env(safe-area-inset-top, 0px)); display: flex; flex-direction: column; gap: 12px; }
 .work-intro h1 { font-size: clamp(36px, 4vw, 56px); line-height: 1.02; }
 .work-intro p:not(.eyebrow) { color: var(--ink-soft); font-size: 16px; max-width: 30ch; }
@@ -408,6 +408,11 @@ img { max-width: 100%; display: block; }
 .wlabel { position: static; max-width: none; padding: 14px 6px 0; border: 0; border-radius: 0; background: none; gap: 10px; }
 .wlabel h2 { font-size: 22px; max-width: 26ch; }
 .wgrid { gap: 28px 24px; }
+
+/* Company name leads each card; the one-line story sits under it */
+.wlabel h2 { font-family: var(--pixel); font-size: 30px; line-height: 1.05; letter-spacing: .01em; max-width: none; }
+.wline { font-size: 16px; line-height: 1.35; color: var(--ink-soft); max-width: 40ch; text-wrap: balance; }
+.wgrid { gap: 32px 28px; }
 
 /* Character portrait in the dialogue box */
 .dialog { display: grid; grid-template-columns: 76px minmax(0, 1fr); column-gap: 14px; align-items: start; }
@@ -1174,22 +1179,22 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
     <div class="wgrid">
       <a class="wcard" href="#bakerhill">
         <div class="wcover c-bh has-img"><img src="work/bh-unify-los-new-mockup-1.webp" alt="Unify on a laptop" loading="lazy" decoding="async"></div>
-        <div class="wlabel"><h2>Giving a lending platform one clear design language</h2><ul class="wtags"><li>Fintech</li><li>Design system</li><li>Rebrand</li></ul></div>
+        <div class="wlabel"><h2>Baker Hill</h2><p class="wline">Giving a lending platform one clear design language</p><ul class="wtags"><li>Fintech</li><li>Design system</li><li>Rebrand</li></ul></div>
         <span class="peek" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View case study →</span>
       </a>
       <a class="wcard" href="#rally">
-        <div class="wcover c-rally has-img"><img src="work/rally-cover.webp" alt="Rally logo over a volunteering photo" loading="lazy" decoding="async"></div>
-        <div class="wlabel"><h2>Turning the urge to volunteer into a booked shift</h2><ul class="wtags"><li>iOS app</li><li>UX/UI</li></ul></div>
+        <div class="wcover c-rally has-img"><img src="work/rally-cover-phones.webp" alt="Four Rally app screens: splash, event feed, filters and event detail" loading="lazy" decoding="async"></div>
+        <div class="wlabel"><h2>Rally</h2><p class="wline">Turning the urge to volunteer into a booked shift</p><ul class="wtags"><li>iOS app</li><li>UX/UI</li></ul></div>
         <span class="peek" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View case study →</span>
       </a>
       <a class="wcard" href="#gobankingrates">
         <div class="wcover c-gbr has-img"><img src="work/gbr-social-1.webp" alt="GOBankingRates social posts" loading="lazy" decoding="async"></div>
-        <div class="wlabel"><h2>Making money advice feel approachable on social</h2><ul class="wtags"><li>Visual design</li><li>Social</li></ul></div>
+        <div class="wlabel"><h2>GOBankingRates</h2><p class="wline">Making money advice feel approachable on social</p><ul class="wtags"><li>Visual design</li><li>Social</li></ul></div>
         <span class="peek" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View case study →</span>
       </a>
       <a class="wcard" href="#chatbooks">
         <div class="wcover c-cb has-img"><img src="work/cb-hero.webp" alt="Chatbooks photo books" loading="lazy" decoding="async"></div>
-        <div class="wlabel"><h2>Getting family photos off phones and into books</h2><ul class="wtags"><li>Campaigns</li><li>Paid media</li></ul></div>
+        <div class="wlabel"><h2>Chatbooks</h2><p class="wline">Getting family photos off phones and into books</p><ul class="wtags"><li>Campaigns</li><li>Paid media</li></ul></div>
         <span class="peek" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View case study →</span>
       </a>
     </div>
