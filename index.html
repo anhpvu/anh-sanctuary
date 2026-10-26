@@ -988,6 +988,10 @@ body:has(#view-home:not([hidden])) .mood { bottom: calc(max(16px, env(safe-area-
 .chapter .body > .shots.pvs.rise-wide { grid-column: 1 / -1; max-width: none; }
 .chapter .body > .shots.pvs.rise-wide.rise-16x9 { max-width: none; }
 .shots.pvs.rise-wide .shot.media img, .shots.pvs.rise-wide .shot.media video { width: 100%; height: auto; display: block; }
+
+/* Sticky chapter titles tuck under photos instead of sitting on top of them */
+.chapter > div:first-child { z-index: 0; }
+.chapter .body > .shot, .chapter .body > .shots, .chapter .body > figure, .chapter .body > .rise-media, .chapter .body > .stats, .chapter .body > .todo, .chapter .body > .callout { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
