@@ -939,9 +939,18 @@ svg.pxi { fill: none; stroke: none !important; }
 :root[data-mood="dawn"]:not([data-mode="dark"]) { --tint: sepia(.35) hue-rotate(-35deg) saturate(1.3) brightness(1.05);
   --cream:#FBE4EB; --paper:#FFF7F9; --ink:#4A2A38; --ink-soft:#7A5666; --sage:#F0C9D6; --sage-deep:#9A4A66; --clay:#B83A62; --peach:#F4A3B7; --glow:#F7B6C6; --rule:#EFC4D1;
   --tray:#4A2A38; --stripe-a:#F5D6E0; --stripe-b:#F0CAD7; }
-:root[data-mood="twilight"]:not([data-mode="dark"]) { --tint: sepia(.45) hue-rotate(215deg) saturate(.85) brightness(.94);
-  --cream:#DDD8EB; --paper:#F6F4FA; --ink:#2C2650; --ink-soft:#5B5582; --sage:#CFC9E4; --sage-deep:#4D4290; --clay:#8E3F6E; --peach:#D9A5C0; --glow:#EBCB8A; --rule:#CCC6E2;
-  --tray:#2C2650; --stripe-a:#DCD7EC; --stripe-b:#D2CCE6; }
+:root[data-mood="twilight"]:not([data-mode="dark"]) { --tint: sepia(.45) hue-rotate(215deg) saturate(.9) brightness(.97);
+  --cream:#D6CDEB; --paper:#F7F3FB; --ink:#2C2650; --ink-soft:#5B5582; --sage:#C9BDE4; --sage-deep:#5A4DA6; --clay:#8E3F6E; --peach:#E4B6DA; --glow:#F6E7BD; --rule:#BFB3DD;
+  --tray:#2C2650; --stripe-a:#D3C9EA; --stripe-b:#C9BDE4; }
+:root[data-mood="twilight"]:not([data-mode="dark"]) .cf { fill: #E8E0F5; }
+.moon-svg, .star { display: none; }
+:root[data-mood="twilight"]:not([data-mode="dark"]) .sky-sun > svg:not(.moon-svg) { display: none; }
+:root[data-mood="twilight"]:not([data-mode="dark"]) .moon-svg { display: block; filter: drop-shadow(0 0 10px rgba(246,231,189,.55)); }
+:root[data-mood="twilight"]:not([data-mode="dark"]) .star { display: block; position: absolute; width: 5px; height: 5px; background: #F6E7BD; border-radius: 1px; box-shadow: 0 0 6px rgba(246,231,189,.8); animation: twinkle 3.6s ease-in-out infinite; }
+.star.s-1 { left: 31%; top: 9%; } .star.s-2 { left: 52%; top: 4%; animation-delay: -1s; } .star.s-3 { left: 68%; top: 14%; width: 4px; height: 4px; animation-delay: -2s; }
+.star.s-4 { left: 15%; top: 20%; width: 4px; height: 4px; animation-delay: -.5s; } .star.s-5 { left: 84%; top: 8%; animation-delay: -2.6s; }
+@keyframes twinkle { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .star { animation: none !important; } }
 :root[data-mood="dusk"]:not([data-mode="dark"]) { --tint: sepia(.55) hue-rotate(-15deg) saturate(1.5) brightness(1.02);
   --cream:#FCE6CF; --paper:#FFF8EE; --ink:#412418; --ink-soft:#7A5645; --sage:#F2D3A8; --sage-deep:#8C4A24; --clay:#C4482D; --peach:#F59E5B; --glow:#F6B04B; --rule:#EBC9A0;
   --tray:#412418; --stripe-a:#F6DCBC; --stripe-b:#F0D2AE; }
@@ -1162,7 +1171,8 @@ body:has(#view-home:not([hidden])) .slot[data-spot="work"] { animation: workring
 
   <div class="stage" id="concept-room">
     <div class="grove" aria-hidden="true">
-      <span class="sky-sun"><svg viewBox="0 0 74 74"><circle class="sun-ring" cx="37" cy="37" r="37"/><circle class="sun-core" cx="37" cy="37" r="26.7"/></svg></span>
+      <span class="sky-sun"><svg viewBox="0 0 74 74"><circle class="sun-ring" cx="37" cy="37" r="37"/><circle class="sun-core" cx="37" cy="37" r="26.7"/></svg><svg class="moon-svg" viewBox="0 0 74 74"><defs><mask id="cres"><rect width="74" height="74" fill="#fff"/><circle cx="50" cy="28" r="27" fill="#000"/></mask></defs><circle cx="33" cy="41" r="30" fill="#F6E7BD" mask="url(#cres)"/></svg></span>
+      <span class="star s-1"></span><span class="star s-2"></span><span class="star s-3"></span><span class="star s-4"></span><span class="star s-5"></span>
       <span class="cloud c-1"><svg viewBox="0 0 302 72"><path d="M237 59C237 66.1797 231.18 72 224 72H34C26.8203 72 21 66.1797 21 59C21 51.8203 26.8203 46 34 46H46C51.5228 46 56 41.5228 56 36C56 30.4772 51.5228 26 46 26H13C5.8203 26 0 20.1797 0 13C0 5.8203 5.8203 0 13 0H137C144.18 0 150 5.8203 150 13C150 20.1797 144.18 26 137 26H126C120.477 26 116 30.4772 116 36C116 41.5228 120.477 46 126 46H224C231.18 46 237 51.8203 237 59Z" class="cf"/>
 <path d="M226 19C226 26.1797 231.82 32 239 32H289C296.18 32 302 26.1797 302 19C302 11.8203 296.18 6 289 6H239C231.82 6 226 11.8203 226 19ZM166 19C166 26.1797 171.82 32 179 32H193C200.18 32 206 26.1797 206 19C206 11.8203 200.18 6 193 6H179C171.82 6 166 11.8203 166 19Z" class="cf"/></svg></span>
       <span class="cloud c-2"><svg viewBox="0 0 123 38"><path d="M123 30.6191C123 34.3454 119.979 37.3662 116.253 37.3662H17.6455C13.9192 37.3662 10.8984 34.3454 10.8984 30.6191C10.8984 26.8928 13.9192 23.8721 17.6455 23.8721H23.874C26.7401 23.8721 29.0635 21.5487 29.0635 18.6826C29.0635 15.8166 26.7401 13.4932 23.874 13.4932H6.74658C3.02055 13.4932 0 10.4726 0 6.74658C0 3.02055 3.02055 0 6.74658 0H71.1011C74.8271 0 77.8477 3.02055 77.8477 6.74658C77.8477 10.4726 74.8271 13.4932 71.1011 13.4932H65.3916C62.5255 13.4932 60.2021 15.8166 60.2021 18.6826C60.2021 21.5487 62.5255 23.8721 65.3916 23.8721H116.253C119.979 23.8721 123 26.8928 123 30.6191Z" class="cf"/></svg></span>
